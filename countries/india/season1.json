@@ -1,43 +1,72 @@
 [
     {
-        "season": 1,
-        "name": "Company A",
-        "category": "Tech",
-        "revenue": "$10M",
-        "founder": "John Doe",
-        "investment": "₹1 Crore for 10%"
+        "companyname": "TechNova",
+        "category": "Technology",
+        "valuation": "₹500 Cr",
+        "investor": "Ratan Tata",
+        "ceo": "Amit Mehta"
     },
     {
-        "season": 1,
-        "name": "Company B",
+        "companyname": "GreenEats",
         "category": "Food",
-        "revenue": "$5M",
-        "founder": "Jane Smith",
-        "investment": "₹50 Lakh for 15%"
+        "valuation": "₹120 Cr",
+        "investor": "Namita Thapar",
+        "ceo": "Sanya Gupta"
     },
     {
-        "season": 2,
-        "name": "Company C",
-        "category": "Health",
-        "revenue": "$8M",
-        "founder": "Alex Patel",
-        "investment": "₹2 Crore for 12%"
+        "companyname": "HealthPlus",
+        "category": "Healthcare",
+        "valuation": "₹300 Cr",
+        "investor": "Peyush Bansal",
+        "ceo": "Ravi Sharma"
     },
     {
-        "season": 3,
-        "name": "Company D",
+        "companyname": "WearTrend",
         "category": "Fashion",
-        "revenue": "$12M",
-        "founder": "Riya Kapoor",
-        "investment": "₹1.5 Crore for 20%"
+        "valuation": "₹250 Cr",
+        "investor": "Anupam Mittal",
+        "ceo": "Kiran Desai"
     },
     {
-        "season": 4,
-        "name": "Company E",
-        "category": "AI",
-        "revenue": "$15M",
-        "founder": "Aman Gupta",
-        "investment": "₹2.5 Crore for 8%"
+        "companyname": "FinGrowth",
+        "category": "Finance",
+        "valuation": "₹600 Cr",
+        "investor": "Aman Gupta",
+        "ceo": "Vikram Singh"
+    },
+    {
+        "companyname": "EduSmart",
+        "category": "EdTech",
+        "valuation": "₹150 Cr",
+        "investor": "Vineeta Singh",
+        "ceo": "Meera Iyer"
+    },
+    {
+        "companyname": "EcoEnergy",
+        "category": "Renewable Energy",
+        "valuation": "₹700 Cr",
+        "investor": "Ratan Tata",
+        "ceo": "Rahul Khanna"
+    },
+    {
+        "companyname": "FitLife",
+        "category": "Fitness",
+        "valuation": "₹200 Cr",
+        "investor": "Peyush Bansal",
+        "ceo": "Neha Kapoor"
+    },
+    {
+        "companyname": "AI Genie",
+        "category": "Artificial Intelligence",
+        "valuation": "₹800 Cr",
+        "investor": "Anupam Mittal",
+        "ceo": "Sameer Verma"
+    },
+    {
+        "companyname": "QuickKart",
+        "category": "E-Commerce",
+        "valuation": "₹550 Cr",
+        "investor": "Aman Gupta",
+        "ceo": "Tanvi Rao"
     }
 ]
-
