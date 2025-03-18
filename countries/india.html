@@ -33,4 +33,146 @@
             font-size: 16px;
             padding: 8px 15px;
             border-radius: 5px;
-            trans
+            transition: 0.3s;
+        }
+        .nav-buttons a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        .tabs-section {
+            background: #181818;
+            padding: 15px 0;
+            margin-top: 0;
+        }
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        .tab {
+            background: rgba(255, 255, 255, 0.3); /* Lighter tab background */
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s ease;
+        }
+        .tab:hover, .tab.active {
+            background: rgba(255, 255, 255, 0.5);
+        }
+        .season-content {
+            display: none;
+            padding: 20px;
+        }
+        .season-content.active {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .company-card {
+            background: rgba(255, 255, 255, 0.12); /* Soft background */
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.1);
+            text-align: center;
+            margin: 15px;
+            width: 280px;
+            backdrop-filter: blur(5px);
+        }
+        footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background: #181818;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h2 style="margin: 0;">Shark Tank India</h2>
+        <div class="nav-buttons">
+            <a href="../index.html">Home</a>
+            <a href="../about.html">About</a>
+            <a href="../investors.html">Investors</a>
+            <div class="dropdown">
+                <select onchange="location = this.value;">
+                    <option value="#">Country</option>
+                    <option value="india.html" selected>India</option>
+                    <option value="us.html">USA</option>
+                    <option value="australia.html">Australia</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <!-- Season Tabs Section -->
+    <div class="tabs-section">
+        <div class="tabs">
+            <div class="tab active" onclick="showSeason(1)">Season 1</div>
+            <div class="tab" onclick="showSeason(2)">Season 2</div>
+            <div class="tab" onclick="showSeason(3)">Season 3</div>
+            <div class="tab" onclick="showSeason(4)">Season 4</div>
+        </div>
+
+        <div id="season-1" class="season-content active">
+            <div class="company-card">
+                <h3>Company A</h3>
+                <p><strong>Category:</strong> Tech</p>
+                <p><strong>Revenue:</strong> $10M</p>
+                <p><strong>Founder:</strong> John Doe</p>
+                <p><strong>Investment:</strong> ₹1 Crore for 10%</p>
+            </div>
+            <div class="company-card">
+                <h3>Company B</h3>
+                <p><strong>Category:</strong> Food</p>
+                <p><strong>Revenue:</strong> $5M</p>
+                <p><strong>Founder:</strong> Jane Smith</p>
+                <p><strong>Investment:</strong> ₹50 Lakh for 15%</p>
+            </div>
+        </div>
+
+        <div id="season-2" class="season-content">
+            <div class="company-card">
+                <h3>Company C</h3>
+                <p><strong>Category:</strong> Health</p>
+                <p><strong>Revenue:</strong> $8M</p>
+                <p><strong>Founder:</strong> Alex Patel</p>
+                <p><strong>Investment:</strong> ₹2 Crore for 12%</p>
+            </div>
+        </div>
+
+        <div id="season-3" class="season-content">
+            <div class="company-card">
+                <h3>Company D</h3>
+                <p><strong>Category:</strong> Fashion</p>
+                <p><strong>Revenue:</strong> $12M</p>
+                <p><strong>Founder:</strong> Riya Kapoor</p>
+                <p><strong>Investment:</strong> ₹1.5 Crore for 20%</p>
+            </div>
+        </div>
+
+        <div id="season-4" class="season-content">
+            <div class="company-card">
+                <h3>Company E</h3>
+                <p><strong>Category:</strong> AI</p>
+                <p><strong>Revenue:</strong> $15M</p>
+                <p><strong>Founder:</strong> Aman Gupta</p>
+                <p><strong>Investment:</strong> ₹2.5 Crore for 8%</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Shark Tank Global | Made with ❤️</p>
+    </footer>
+
+    <script>
+        function showSeason(season) {
+            document.querySelectorAll('.season-content').forEach(el => el.classList.remove('active'));
+            document.querySelector('#season-' + season).classList.add('active');
+            document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab')[season - 1].classList.add('active');
+        }
+    </script>
+</body>
+</html>
