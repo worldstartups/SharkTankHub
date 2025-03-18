@@ -5,33 +5,51 @@ body {
     padding: 0;
     background-color: #f8f9fa;
 }
+
+/* Header */
 header {
     background-color: #0073e6;
     color: white;
     padding: 20px;
     font-size: 24px;
+    font-style: italic; /* Added italic font */
+    font-family: 'Georgia', serif; /* A more elegant font */
 }
+
+/* Navigation */
 nav {
     background: #005bb5;
     padding: 10px;
 }
+
 nav a {
     color: white;
     text-decoration: none;
     margin: 10px;
     font-size: 18px;
+    transition: color 0.3s ease-in-out;
 }
+
+nav a:hover {
+    color: #f8f9fa;
+}
+
+/* Content Container */
 .container {
     max-width: 800px;
     margin: 30px auto;
     padding: 20px;
     background: white;
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
 }
+
+/* Footer */
 footer {
     margin-top: 20px;
     padding: 10px;
     background-color: #0073e6;
     color: white;
+    font-style: italic; /* Adding consistency */
+    font-family: 'Georgia', serif;
 }
