@@ -56,27 +56,23 @@
         .filters {
             display: flex;
             gap: 15px;
-            padding: 15px 40px;
-            justify-content: flex-start;
-            align-items: center;
-            background: #181818;
+            padding: 20px 40px;
         }
-        .filters select, .filters input {
+        select {
             padding: 8px;
-            font-size: 14px;
+            border: 1px solid #ccc;
             border-radius: 5px;
-            border: none;
-        }
-        .filters label {
-            font-size: 14px;
+            background: #181818;
+            color: white;
+            cursor: pointer;
         }
 
         /* Company Cards */
         .company-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 20px;
             justify-content: center;
+            gap: 20px;
             padding: 20px;
         }
         .company-card {
@@ -84,21 +80,25 @@
             padding: 20px;
             border-radius: 12px;
             box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.1);
-            width: 280px;
+            backdrop-filter: blur(5px);
+            width: 250px;
             text-align: center;
-            transition: 0.3s;
-        }
-        .company-card:hover {
-            transform: scale(1.05);
         }
 
-        /* Footer */
+        /* Season Content */
+        .season-content {
+            display: none;
+            padding: 20px;
+        }
+        .season-content.active {
+            display: block;
+        }
+
         footer {
             text-align: center;
-            padding: 15px;
-            margin-top: 50px;
-            background: none;
-            color: white;
+            padding: 20px;
+            margin-top: auto;
+            background: #121212;
         }
     </style>
 </head>
@@ -122,28 +122,27 @@
 
     <!-- Horizontal Season Tabs -->
     <div class="season-tabs">
-        <span class="season-tab active" onclick="fetchSeasonData('season1.json', this)">Season 1</span>
-        <span class="season-tab" onclick="fetchSeasonData('season2.json', this)">Season 2</span>
-        <span class="season-tab" onclick="fetchSeasonData('season3.json', this)">Season 3</span>
-        <span class="season-tab" onclick="fetchSeasonData('season4.json', this)">Season 4</span>
+        <span class="season-tab active" onclick="fetchSeasonData('season1.json')">Season 1</span>
+        <span class="season-tab" onclick="fetchSeasonData('season2.json')">Season 2</span>
+        <span class="season-tab" onclick="fetchSeasonData('season3.json')">Season 3</span>
+        <span class="season-tab" onclick="fetchSeasonData('season4.json')">Season 4</span>
     </div>
 
-    <!-- Filters Section -->
+    <!-- Filters -->
     <div class="filters">
-        <label>Category: 
-            <select id="categoryFilter" onchange="applyFilters()">
-                <option value="">All</option>
-            </select>
-        </label>
-        <label>Investor: 
-            <select id="investorFilter" onchange="applyFilters()">
-                <option value="">All</option>
-            </select>
-        </label>
-        <label>Valuation: 
-            <input type="number" id="minValuation" placeholder="Min ₹Cr" style="width: 80px;" oninput="applyFilters()">
-            <input type="number" id="maxValuation" placeholder="Max ₹Cr" style="width: 80px;" oninput="applyFilters()">
-        </label>
+        <select id="categoryFilter" onchange="applyFilters()">
+            <option value="">Category</option>
+        </select>
+        <select id="investorFilter" onchange="applyFilters()">
+            <option value="">Investor</option>
+        </select>
+        <select id="valuationFilter" onchange="applyFilters()">
+            <option value="">Valuation Range</option>
+            <option value="0-100">₹0 - ₹100 Cr</option>
+            <option value="100-300">₹100 - ₹300 Cr</option>
+            <option value="300-500">₹300 - ₹500 Cr</option>
+            <option value="500-1000">₹500 - ₹1000 Cr</option>
+        </select>
     </div>
 
     <!-- Season Content -->
@@ -156,52 +155,64 @@
     </footer>
 
     <script>
-        let currentSeasonData = [];
+        let allCompanies = [];
 
-        async function fetchSeasonData(seasonFile, element) {
+        async function fetchSeasonData(seasonFile) {
             try {
-                // Remove active class from all tabs and set new one
-                document.querySelectorAll('.season-tab').forEach(tab => tab.classList.remove('active'));
-                element.classList.add('active');
-
                 const response = await fetch(seasonFile);
-                currentSeasonData = await response.json();
-                populateFilters(currentSeasonData);
-                displayCompanies(currentSeasonData);
+                allCompanies = await response.json();
+                populateFilters();
+                displayCompanies(allCompanies);
             } catch (error) {
                 console.error("Error fetching data:", error);
                 document.getElementById('season-container').innerHTML = "<p>Failed to load companies.</p>";
             }
         }
 
-        function populateFilters(companies) {
+        function populateFilters() {
             const categorySet = new Set();
             const investorSet = new Set();
 
-            companies.forEach(company => {
+            allCompanies.forEach(company => {
                 categorySet.add(company.category);
-                if (company.investor) investorSet.add(company.investor);
+                investorSet.add(company.investor);
             });
 
-            document.getElementById('categoryFilter').innerHTML = `<option value="">All</option>` +
-                [...categorySet].map(category => `<option value="${category}">${category}</option>`).join('');
+            const categoryFilter = document.getElementById('categoryFilter');
+            categoryFilter.innerHTML = '<option value="">Category</option>';
+            categorySet.forEach(category => {
+                categoryFilter.innerHTML += `<option value="${category}">${category}</option>`;
+            });
 
-            document.getElementById('investorFilter').innerHTML = `<option value="">All</option>` +
-                [...investorSet].map(investor => `<option value="${investor}">${investor}</option>`).join('');
+            const investorFilter = document.getElementById('investorFilter');
+            investorFilter.innerHTML = '<option value="">Investor</option>';
+            investorSet.forEach(investor => {
+                investorFilter.innerHTML += `<option value="${investor}">${investor}</option>`;
+            });
         }
 
         function applyFilters() {
-            const category = document.getElementById('categoryFilter').value;
-            const investor = document.getElementById('investorFilter').value;
-            const minVal = parseFloat(document.getElementById('minValuation').value) || 0;
-            const maxVal = parseFloat(document.getElementById('maxValuation').value) || Infinity;
+            const selectedCategory = document.getElementById('categoryFilter').value;
+            const selectedInvestor = document.getElementById('investorFilter').value;
+            const selectedValuation = document.getElementById('valuationFilter').value;
 
-            const filteredCompanies = currentSeasonData.filter(company => {
-                return (!category || company.category === category) &&
-                    (!investor || company.investor === investor) &&
-                    (parseFloat(company.valuation.replace('₹', '').replace('Cr', '')) >= minVal) &&
-                    (parseFloat(company.valuation.replace('₹', '').replace('Cr', '')) <= maxVal);
-            });
+            let filteredCompanies = allCompanies;
+
+            if (selectedCategory) {
+                filteredCompanies = filteredCompanies.filter(company => company.category === selectedCategory);
+            }
+
+            if (selectedInvestor) {
+                filteredCompanies = filteredCompanies.filter(company => company.investor === selectedInvestor);
+            }
+
+            if (selectedValuation) {
+                const [min, max] = selectedValuation.split('-').map(Number);
+                filteredCompanies = filteredCompanies.filter(company => {
+                    const valuation = parseInt(company.valuation.replace('₹', '').replace(' Cr', ''));
+                    return valuation >= min && valuation <= max;
+                });
+            }
 
             displayCompanies(filteredCompanies);
         }
@@ -219,17 +230,17 @@
                 const card = document.createElement('div');
                 card.classList.add('company-card');
                 card.innerHTML = `
-                    <h3>${company.name}</h3>
+                    <h3>${company.companyname}</h3>
                     <p><strong>Category:</strong> ${company.category}</p>
-                    <p><strong>Investor:</strong> ${company.investor || 'N/A'}</p>
                     <p><strong>Valuation:</strong> ${company.valuation}</p>
+                    <p><strong>Investor:</strong> ${company.investor}</p>
+                    <p><strong>CEO:</strong> ${company.ceo}</p>
                 `;
                 container.appendChild(card);
             });
         }
 
-        // Load Season 1 by default
-        fetchSeasonData('season1.json', document.querySelector('.season-tab.active'));
+        fetchSeasonData('season1.json');
     </script>
 </body>
 </html>
