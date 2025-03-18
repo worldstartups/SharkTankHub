@@ -1,0 +1,42 @@
+[
+    {
+        "season": 1,
+        "name": "Company A",
+        "category": "Tech",
+        "revenue": "$10M",
+        "founder": "John Doe",
+        "investment": "₹1 Crore for 10%"
+    },
+    {
+        "season": 1,
+        "name": "Company B",
+        "category": "Food",
+        "revenue": "$5M",
+        "founder": "Jane Smith",
+        "investment": "₹50 Lakh for 15%"
+    },
+    {
+        "season": 2,
+        "name": "Company C",
+        "category": "Health",
+        "revenue": "$8M",
+        "founder": "Alex Patel",
+        "investment": "₹2 Crore for 12%"
+    },
+    {
+        "season": 3,
+        "name": "Company D",
+        "category": "Fashion",
+        "revenue": "$12M",
+        "founder": "Riya Kapoor",
+        "investment": "₹1.5 Crore for 20%"
+    },
+    {
+        "season": 4,
+        "name": "Company E",
+        "category": "AI",
+        "revenue": "$15M",
+        "founder": "Aman Gupta",
+        "investment": "₹2.5 Crore for 8%"
+    }
+]
