@@ -128,22 +128,27 @@
         <span class="season-tab" onclick="fetchSeasonData('season4.json')">Season 4</span>
     </div>
 
-    <!-- Filters -->
+ <!-- Filters Section -->
+<div class="filters">
+    <label>Category:</label>
     <select id="categoryFilter" onchange="applyFilters()">
-    <option value="">All Categories</option>
-</select>
+        <option value="all">All</option>
+    </select>
 
-<select id="investorFilter" onchange="applyFilters()">
-    <option value="">All Investors</option>
-</select>
+    <label>Investor:</label>
+    <select id="investorFilter" onchange="applyFilters()">
+        <option value="all">All</option>
+    </select>
 
-<select id="valuationFilter" onchange="applyFilters()">
-    <option value="">All Valuation Ranges</option>
-    <option value="0-100">₹0 - ₹100 Cr</option>
-    <option value="100-300">₹100 - ₹300 Cr</option>
-    <option value="300-500">₹300 - ₹500 Cr</option>
-    <option value="500-1000">₹500 - ₹1000 Cr</option>
-</select>
+    <label>Valuation:</label>
+    <select id="valuationFilter" onchange="applyFilters()">
+        <option value="all">All</option>
+        <option value="0-100">₹0 - ₹100 Cr</option>
+        <option value="100-300">₹100 - ₹300 Cr</option>
+        <option value="300-500">₹300 - ₹500 Cr</option>
+        <option value="500-1000">₹500 - ₹1000 Cr</option>
+    </select>
+</div>
 
     <!-- Season Content -->
     <div id="season-container" class="company-container">
@@ -155,41 +160,33 @@
     </footer>
 
     <script>
-        let allCompanies = [];
+       let allCompanies = [];
 
-        async function fetchSeasonData(seasonFile) {
-            try {
-                const response = await fetch(seasonFile);
-                allCompanies = await response.json();
-                populateFilters();
-                displayCompanies(allCompanies);
-            } catch (error) {
-                console.error("Error fetching data:", error);
-                document.getElementById('season-container').innerHTML = "<p>Failed to load companies.</p>";
-            }
-        }
+async function fetchSeasonData(seasonFile) {
+    try {
+        const response = await fetch(seasonFile);
+        allCompanies = await response.json();
+        populateFilters();
+        displayCompanies(allCompanies);
+    } catch (error) {
+        console.error("Error fetching data:", error);
+        document.getElementById('season-container').innerHTML = "<p>Failed to load companies.</p>";
+    }
+}
 
-        function populateFilters() {
-            const categorySet = new Set();
-            const investorSet = new Set();
+// Populate filter dropdowns dynamically
+function populateFilters() {
+    const categoryFilter = document.getElementById('categoryFilter');
+    const investorFilter = document.getElementById('investorFilter');
 
-            allCompanies.forEach(company => {
-                categorySet.add(company.category);
-                investorSet.add(company.investor);
-            });
+    const categories = ["All", ...new Set(allCompanies.map(company => company.category))];
+    const investors = ["All", ...new Set(allCompanies.map(company => company.investor))];
 
-            const categoryFilter = document.getElementById('categoryFilter');
-            categoryFilter.innerHTML = '<option value="">Category</option>';
-            categorySet.forEach(category => {
-                categoryFilter.innerHTML += `<option value="${category}">${category}</option>`;
-            });
+    categoryFilter.innerHTML = categories.map(cat => `<option value="${cat}">${cat}</option>`).join('');
+    investorFilter.innerHTML = investors.map(inv => `<option value="${inv}">${inv}</option>`).join('');
+}
 
-            const investorFilter = document.getElementById('investorFilter');
-            investorFilter.innerHTML = '<option value="">Investor</option>';
-            investorSet.forEach(investor => {
-                investorFilter.innerHTML += `<option value="${investor}">${investor}</option>`;
-            });
-        }
+// Apply filters to the company list
 function applyFilters() {
     const selectedCategory = document.getElementById('categoryFilter').value;
     const selectedInvestor = document.getElementById('investorFilter').value;
@@ -197,15 +194,15 @@ function applyFilters() {
 
     let filteredCompanies = allCompanies;
 
-    if (selectedCategory !== "") {
+    if (selectedCategory !== "All") {
         filteredCompanies = filteredCompanies.filter(company => company.category === selectedCategory);
     }
 
-    if (selectedInvestor !== "") {
+    if (selectedInvestor !== "All") {
         filteredCompanies = filteredCompanies.filter(company => company.investor === selectedInvestor);
     }
 
-    if (selectedValuation !== "") {
+    if (selectedValuation !== "All") {
         const [min, max] = selectedValuation.split('-').map(Number);
         filteredCompanies = filteredCompanies.filter(company => {
             const valuation = parseInt(company.valuation.replace('₹', '').replace(' Cr', ''));
@@ -216,31 +213,32 @@ function applyFilters() {
     displayCompanies(filteredCompanies);
 }
 
+// Display filtered companies
+function displayCompanies(companies) {
+    const container = document.getElementById('season-container');
+    container.innerHTML = '';
 
-        function displayCompanies(companies) {
-            const container = document.getElementById('season-container');
-            container.innerHTML = '';
+    if (companies.length === 0) {
+        container.innerHTML = "<p>No companies found.</p>";
+        return;
+    }
 
-            if (companies.length === 0) {
-                container.innerHTML = "<p>No companies found.</p>";
-                return;
-            }
+    companies.forEach(company => {
+        const card = document.createElement('div');
+        card.classList.add('company-card');
+        card.innerHTML = `
+            <h3>${company.name}</h3>
+            <p><strong>Category:</strong> ${company.category}</p>
+            <p><strong>Valuation:</strong> ${company.valuation}</p>
+            <p><strong>Investor:</strong> ${company.investor}</p>
+            <p><strong>CEO:</strong> ${company.ceo}</p>
+        `;
+        container.appendChild(card);
+    });
+}
 
-            companies.forEach(company => {
-                const card = document.createElement('div');
-                card.classList.add('company-card');
-                card.innerHTML = `
-                    <h3>${company.companyname}</h3>
-                    <p><strong>Category:</strong> ${company.category}</p>
-                    <p><strong>Valuation:</strong> ${company.valuation}</p>
-                    <p><strong>Investor:</strong> ${company.investor}</p>
-                    <p><strong>CEO:</strong> ${company.ceo}</p>
-                `;
-                container.appendChild(card);
-            });
-        }
-
-        fetchSeasonData('season1.json');
+// Load Season 1 by default
+fetchSeasonData('season1.json');
     </script>
 </body>
 </html>
