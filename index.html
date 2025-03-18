@@ -43,33 +43,13 @@
             position: relative;
             cursor: pointer;
         }
-        .country-dropdown img {
-            width: 40px;
-            height: 30px;
-        }
-        .dropdown-menu {
-            display: none;
-            position: absolute;
-            background: white;
-            color: black;
-            box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
-            list-style: none;
-            padding: 10px;
-            border-radius: 5px;
-            right: 0;
-            top: 40px;
-        }
-        .dropdown-menu li {
-            padding: 10px;
-        }
-        .dropdown-menu li a {
-            text-decoration: none;
-            color: black;
-            font-size: 16px;
-            display: block;
-        }
-        .dropdown-menu.show {
-            display: block;
+        .country-dropdown select {
+            background-color: #161b22;
+            color: white;
+            border: none;
+            font-size: 18px;
+            font-weight: 600;
+            padding: 5px;
         }
         .hero {
             padding: 80px 20px;
@@ -77,6 +57,14 @@
             color: white;
             font-size: 32px;
             font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .hero p {
+            max-width: 600px;
+            font-size: 18px;
         }
         .featured-section {
             display: flex;
@@ -92,10 +80,15 @@
             border-radius: 10px;
             box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.2);
             text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .featured-show:hover {
+            transform: scale(1.05);
         }
         .featured-show img {
             width: 100%;
             border-radius: 10px;
+            cursor: pointer;
         }
         .featured-show h3 {
             font-size: 20px;
@@ -119,33 +112,34 @@
                 <li><a href="about.html">About</a></li>
             </ul>
         </nav>
-        <div class="country-dropdown" onclick="toggleDropdown()">
-            <img src="images/globe-icon.png" alt="Select Country">
-            <ul class="dropdown-menu" id="countryMenu">
-                <li><a href="countries/india.html">India</a></li>
-                <li><a href="countries/us.html">United States</a></li>
-                <li><a href="countries/australia.html">Australia</a></li>
-            </ul>
+        <div class="country-dropdown">
+            <select onchange="location = this.value;">
+                <option value="#">Select Country</option>
+                <option value="countries/india.html">India</option>
+                <option value="countries/us.html">United States</option>
+                <option value="countries/australia.html">Australia</option>
+            </select>
         </div>
     </header>
     
     <section class="hero">
         <h2>Explore Shark Tank Startups from Around the World!</h2>
+        <p>Discover groundbreaking startups, their investments, and their current status across various Shark Tank editions worldwide.</p>
     </section>
     
     <div class="featured-section">
         <div class="featured-show">
-            <img src="images/india.jpg" alt="Shark Tank India">
+            <img src="images/india.jpg" alt="Shark Tank India" onclick="location.href='countries/india.html'">
             <h3>Shark Tank India</h3>
             <p>Explore the most exciting startups from India.</p>
         </div>
         <div class="featured-show">
-            <img src="images/us.jpg" alt="Shark Tank US">
+            <img src="images/us.jpg" alt="Shark Tank US" onclick="location.href='countries/us.html'">
             <h3>Shark Tank US</h3>
             <p>Discover groundbreaking businesses from the USA.</p>
         </div>
         <div class="featured-show">
-            <img src="images/australia.jpg" alt="Shark Tank Australia">
+            <img src="images/australia.jpg" alt="Shark Tank Australia" onclick="location.href='countries/australia.html'">
             <h3>Shark Tank Australia</h3>
             <p>See the most innovative companies from Australia.</p>
         </div>
@@ -154,16 +148,5 @@
     <footer>
         <p>&copy; 2025 Shark Tank Global | Made with ❤️</p>
     </footer>
-
-    <script>
-        function toggleDropdown() {
-            document.getElementById('countryMenu').classList.toggle('show');
-        }
-        window.onclick = function(event) {
-            if (!event.target.matches('.country-dropdown img')) {
-                document.getElementById('countryMenu').classList.remove('show');
-            }
-        }
-    </script>
 </body>
 </html>
