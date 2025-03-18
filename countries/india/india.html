@@ -129,21 +129,21 @@
     </div>
 
     <!-- Filters -->
-    <div class="filters">
-        <select id="categoryFilter" onchange="applyFilters()">
-            <option value="">Category</option>
-        </select>
-        <select id="investorFilter" onchange="applyFilters()">
-            <option value="">Investor</option>
-        </select>
-        <select id="valuationFilter" onchange="applyFilters()">
-            <option value="">Valuation Range</option>
-            <option value="0-100">₹0 - ₹100 Cr</option>
-            <option value="100-300">₹100 - ₹300 Cr</option>
-            <option value="300-500">₹300 - ₹500 Cr</option>
-            <option value="500-1000">₹500 - ₹1000 Cr</option>
-        </select>
-    </div>
+    <select id="categoryFilter" onchange="applyFilters()">
+    <option value="">All Categories</option>
+</select>
+
+<select id="investorFilter" onchange="applyFilters()">
+    <option value="">All Investors</option>
+</select>
+
+<select id="valuationFilter" onchange="applyFilters()">
+    <option value="">All Valuation Ranges</option>
+    <option value="0-100">₹0 - ₹100 Cr</option>
+    <option value="100-300">₹100 - ₹300 Cr</option>
+    <option value="300-500">₹300 - ₹500 Cr</option>
+    <option value="500-1000">₹500 - ₹1000 Cr</option>
+</select>
 
     <!-- Season Content -->
     <div id="season-container" class="company-container">
@@ -190,32 +190,32 @@
                 investorFilter.innerHTML += `<option value="${investor}">${investor}</option>`;
             });
         }
+function applyFilters() {
+    const selectedCategory = document.getElementById('categoryFilter').value;
+    const selectedInvestor = document.getElementById('investorFilter').value;
+    const selectedValuation = document.getElementById('valuationFilter').value;
 
-        function applyFilters() {
-            const selectedCategory = document.getElementById('categoryFilter').value;
-            const selectedInvestor = document.getElementById('investorFilter').value;
-            const selectedValuation = document.getElementById('valuationFilter').value;
+    let filteredCompanies = allCompanies;
 
-            let filteredCompanies = allCompanies;
+    if (selectedCategory !== "") {
+        filteredCompanies = filteredCompanies.filter(company => company.category === selectedCategory);
+    }
 
-            if (selectedCategory) {
-                filteredCompanies = filteredCompanies.filter(company => company.category === selectedCategory);
-            }
+    if (selectedInvestor !== "") {
+        filteredCompanies = filteredCompanies.filter(company => company.investor === selectedInvestor);
+    }
 
-            if (selectedInvestor) {
-                filteredCompanies = filteredCompanies.filter(company => company.investor === selectedInvestor);
-            }
+    if (selectedValuation !== "") {
+        const [min, max] = selectedValuation.split('-').map(Number);
+        filteredCompanies = filteredCompanies.filter(company => {
+            const valuation = parseInt(company.valuation.replace('₹', '').replace(' Cr', ''));
+            return valuation >= min && valuation <= max;
+        });
+    }
 
-            if (selectedValuation) {
-                const [min, max] = selectedValuation.split('-').map(Number);
-                filteredCompanies = filteredCompanies.filter(company => {
-                    const valuation = parseInt(company.valuation.replace('₹', '').replace(' Cr', ''));
-                    return valuation >= min && valuation <= max;
-                });
-            }
+    displayCompanies(filteredCompanies);
+}
 
-            displayCompanies(filteredCompanies);
-        }
 
         function displayCompanies(companies) {
             const container = document.getElementById('season-container');
