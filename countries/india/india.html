@@ -12,9 +12,6 @@
             padding: 0;
             background: #121212;
             color: #E0E0E0;
-            min-height: 100vh; /* Ensure full height */
-            display: flex;
-            flex-direction: column;
         }
         header {
             display: flex;
@@ -55,34 +52,52 @@
             text-decoration: underline;
         }
 
-        /* Company Cards Container */
-        #season-container {
+        /* Filters */
+        .filters {
             display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            padding: 20px;
+            gap: 15px;
+            padding: 15px 40px;
             justify-content: flex-start;
+            align-items: center;
+            background: #181818;
+        }
+        .filters select, .filters input {
+            padding: 8px;
+            font-size: 14px;
+            border-radius: 5px;
+            border: none;
+        }
+        .filters label {
+            font-size: 14px;
         }
 
         /* Company Cards */
+        .company-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            padding: 20px;
+        }
         .company-card {
             background: rgba(255, 255, 255, 0.12);
             padding: 20px;
             border-radius: 12px;
             box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(5px);
+            width: 280px;
             text-align: center;
-            width: 250px;
+            transition: 0.3s;
+        }
+        .company-card:hover {
+            transform: scale(1.05);
         }
 
-        /* Footer - Fixed at Bottom */
+        /* Footer */
         footer {
             text-align: center;
-            padding: 10px;
-            width: 100%;
-            position: absolute;
-            bottom: 0;
-            background: none; /* Remove background color */
+            padding: 15px;
+            margin-top: 50px;
+            background: none;
             color: white;
         }
     </style>
@@ -107,14 +122,32 @@
 
     <!-- Horizontal Season Tabs -->
     <div class="season-tabs">
-        <span class="season-tab active" onclick="fetchSeasonData('season1.json')">Season 1</span>
-        <span class="season-tab" onclick="fetchSeasonData('season2.json')">Season 2</span>
-        <span class="season-tab" onclick="fetchSeasonData('season3.json')">Season 3</span>
-        <span class="season-tab" onclick="fetchSeasonData('season4.json')">Season 4</span>
+        <span class="season-tab active" onclick="fetchSeasonData('season1.json', this)">Season 1</span>
+        <span class="season-tab" onclick="fetchSeasonData('season2.json', this)">Season 2</span>
+        <span class="season-tab" onclick="fetchSeasonData('season3.json', this)">Season 3</span>
+        <span class="season-tab" onclick="fetchSeasonData('season4.json', this)">Season 4</span>
+    </div>
+
+    <!-- Filters Section -->
+    <div class="filters">
+        <label>Category: 
+            <select id="categoryFilter" onchange="applyFilters()">
+                <option value="">All</option>
+            </select>
+        </label>
+        <label>Investor: 
+            <select id="investorFilter" onchange="applyFilters()">
+                <option value="">All</option>
+            </select>
+        </label>
+        <label>Valuation: 
+            <input type="number" id="minValuation" placeholder="Min ₹Cr" style="width: 80px;" oninput="applyFilters()">
+            <input type="number" id="maxValuation" placeholder="Max ₹Cr" style="width: 80px;" oninput="applyFilters()">
+        </label>
     </div>
 
     <!-- Season Content -->
-    <div id="season-container">
+    <div id="season-container" class="company-container">
         <p>Loading companies...</p>
     </div>
 
@@ -123,15 +156,54 @@
     </footer>
 
     <script>
-        async function fetchSeasonData(seasonFile) {
+        let currentSeasonData = [];
+
+        async function fetchSeasonData(seasonFile, element) {
             try {
+                // Remove active class from all tabs and set new one
+                document.querySelectorAll('.season-tab').forEach(tab => tab.classList.remove('active'));
+                element.classList.add('active');
+
                 const response = await fetch(seasonFile);
-                const companyData = await response.json();
-                displayCompanies(companyData);
+                currentSeasonData = await response.json();
+                populateFilters(currentSeasonData);
+                displayCompanies(currentSeasonData);
             } catch (error) {
                 console.error("Error fetching data:", error);
                 document.getElementById('season-container').innerHTML = "<p>Failed to load companies.</p>";
             }
+        }
+
+        function populateFilters(companies) {
+            const categorySet = new Set();
+            const investorSet = new Set();
+
+            companies.forEach(company => {
+                categorySet.add(company.category);
+                if (company.investor) investorSet.add(company.investor);
+            });
+
+            document.getElementById('categoryFilter').innerHTML = `<option value="">All</option>` +
+                [...categorySet].map(category => `<option value="${category}">${category}</option>`).join('');
+
+            document.getElementById('investorFilter').innerHTML = `<option value="">All</option>` +
+                [...investorSet].map(investor => `<option value="${investor}">${investor}</option>`).join('');
+        }
+
+        function applyFilters() {
+            const category = document.getElementById('categoryFilter').value;
+            const investor = document.getElementById('investorFilter').value;
+            const minVal = parseFloat(document.getElementById('minValuation').value) || 0;
+            const maxVal = parseFloat(document.getElementById('maxValuation').value) || Infinity;
+
+            const filteredCompanies = currentSeasonData.filter(company => {
+                return (!category || company.category === category) &&
+                    (!investor || company.investor === investor) &&
+                    (parseFloat(company.valuation.replace('₹', '').replace('Cr', '')) >= minVal) &&
+                    (parseFloat(company.valuation.replace('₹', '').replace('Cr', '')) <= maxVal);
+            });
+
+            displayCompanies(filteredCompanies);
         }
 
         function displayCompanies(companies) {
@@ -139,7 +211,7 @@
             container.innerHTML = '';
 
             if (companies.length === 0) {
-                container.innerHTML = "<p>No companies found for this season.</p>";
+                container.innerHTML = "<p>No companies found.</p>";
                 return;
             }
 
@@ -149,17 +221,15 @@
                 card.innerHTML = `
                     <h3>${company.name}</h3>
                     <p><strong>Category:</strong> ${company.category}</p>
-                    <p><strong>Revenue:</strong> ${company.revenue}</p>
-                    <p><strong>Founder:</strong> ${company.founder}</p>
-                    <p><strong>Investment:</strong> ${company.investment}</p>
+                    <p><strong>Investor:</strong> ${company.investor || 'N/A'}</p>
+                    <p><strong>Valuation:</strong> ${company.valuation}</p>
                 `;
                 container.appendChild(card);
             });
         }
 
         // Load Season 1 by default
-        fetchSeasonData('season1.json');
+        fetchSeasonData('season1.json', document.querySelector('.season-tab.active'));
     </script>
-
 </body>
 </html>
