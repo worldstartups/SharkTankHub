@@ -6,22 +6,23 @@
     <title>Shark Tank Global</title>
     <link rel="stylesheet" href="style.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
         body {
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #0d1117;
+            color: white;
             text-align: center;
         }
         header {
-            background-color: #0073e6;
+            background-color: #161b22;
             color: white;
-            padding: 15px 0;
+            padding: 15px 50px;
             font-size: 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 50px;
         }
         nav ul {
             list-style: none;
@@ -36,6 +37,7 @@
             color: white;
             text-decoration: none;
             font-size: 18px;
+            font-weight: 600;
         }
         .country-dropdown {
             position: relative;
@@ -49,6 +51,7 @@
             display: none;
             position: absolute;
             background: white;
+            color: black;
             box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
             list-style: none;
             padding: 10px;
@@ -69,26 +72,37 @@
             display: block;
         }
         .hero {
-            padding: 50px 20px;
-            background: url('images/background.jpg') no-repeat center center/cover;
+            padding: 80px 20px;
+            background: url('images/sharktank-banner.jpg') no-repeat center center/cover;
             color: white;
-            font-size: 28px;
+            font-size: 32px;
             font-weight: bold;
         }
-        .country-images {
+        .featured-section {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            padding: 20px;
+            gap: 30px;
+            padding: 40px;
+            flex-wrap: wrap;
         }
-        .country-images img {
-            width: 200px;
-            height: auto;
+        .featured-show {
+            width: 300px;
+            background: #161b22;
+            padding: 15px;
             border-radius: 10px;
-            box-shadow: 0px 4px 8px rgba(0,0,0,0.3);
+            box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+        .featured-show img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .featured-show h3 {
+            font-size: 20px;
+            margin: 10px 0;
         }
         footer {
-            background-color: #0073e6;
+            background-color: #161b22;
             color: white;
             padding: 15px;
             margin-top: 20px;
@@ -119,14 +133,26 @@
         <h2>Explore Shark Tank Startups from Around the World!</h2>
     </section>
     
-    <div class="country-images">
-        <img src="images/india.jpg" alt="Shark Tank India">
-        <img src="images/us.jpg" alt="Shark Tank US">
-        <img src="images/australia.jpg" alt="Shark Tank Australia">
+    <div class="featured-section">
+        <div class="featured-show">
+            <img src="images/india.jpg" alt="Shark Tank India">
+            <h3>Shark Tank India</h3>
+            <p>Explore the most exciting startups from India.</p>
+        </div>
+        <div class="featured-show">
+            <img src="images/us.jpg" alt="Shark Tank US">
+            <h3>Shark Tank US</h3>
+            <p>Discover groundbreaking businesses from the USA.</p>
+        </div>
+        <div class="featured-show">
+            <img src="images/australia.jpg" alt="Shark Tank Australia">
+            <h3>Shark Tank Australia</h3>
+            <p>See the most innovative companies from Australia.</p>
+        </div>
     </div>
     
     <footer>
-        <p>&copy; 2025 Shark Tank Global | Made with ❤️ ash</p>
+        <p>&copy; 2025 Shark Tank Global | Made with ❤️</p>
     </footer>
 
     <script>
