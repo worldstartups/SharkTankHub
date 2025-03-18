@@ -8,11 +8,11 @@ async function fetchSeasonData(seasonFile) {
         allCompanies = await response.json();
         currentSeasonFile = seasonFile;
         populateFilters();
-        applyFilters(); // Apply filters to update company count when season changes
+        applyFilters(); // Ensures all companies are shown initially
     } catch (error) {
         console.error("Error fetching data:", error);
         document.getElementById('season-container').innerHTML = "<p>Failed to load companies.</p>";
-        document.getElementById('companyCount').textContent = "0"; // Update count on failure
+        document.getElementById('companyCount').textContent = "0"; // Set count to 0 on failure
     }
 }
 
@@ -28,13 +28,13 @@ function populateFilters() {
     investorFilter.innerHTML = investors.map(inv => `<option value="${inv}">${inv}</option>`).join('');
 }
 
-// Apply filters to the company list
+// Apply filters and update count
 function applyFilters() {
     const selectedCategory = document.getElementById('categoryFilter').value;
     const selectedInvestor = document.getElementById('investorFilter').value;
     const selectedValuation = document.getElementById('valuationFilter').value;
 
-    let filteredCompanies = allCompanies;
+    let filteredCompanies = [...allCompanies]; // Copy all companies initially
 
     if (selectedCategory !== "All") {
         filteredCompanies = filteredCompanies.filter(company => company.category === selectedCategory);
@@ -47,7 +47,7 @@ function applyFilters() {
     if (selectedValuation !== "All") {
         const [min, max] = selectedValuation.split('-').map(Number);
         filteredCompanies = filteredCompanies.filter(company => {
-            const valuation = parseInt(company.valuation.replace(/[₹, Cr]/g, ""));
+            const valuation = parseFloat(company.valuation.replace(/[₹, Cr]/g, "").trim()); // Fixed valuation parsing
             return valuation >= min && valuation <= max;
         });
     }
