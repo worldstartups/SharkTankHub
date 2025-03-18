@@ -6,43 +6,105 @@
     <title>Shark Tank Global</title>
     <link rel="stylesheet" href="style.css">
     <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        header {
+            background-color: #0073e6;
+            color: white;
+            padding: 15px 0;
+            font-size: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 50px;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
         .country-dropdown {
-            position: absolute;
-            top: 10px;
-            right: 20px;
+            position: relative;
+            cursor: pointer;
         }
         .country-dropdown img {
             width: 40px;
             height: 30px;
-            margin: 5px;
-            cursor: pointer;
         }
         .dropdown-menu {
             display: none;
             position: absolute;
             background: white;
-            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
             list-style: none;
             padding: 10px;
             border-radius: 5px;
-            right: 20px;
-            top: 50px;
+            right: 0;
+            top: 40px;
         }
         .dropdown-menu li {
-            padding: 5px 10px;
+            padding: 10px;
         }
         .dropdown-menu li a {
             text-decoration: none;
             color: black;
+            font-size: 16px;
+            display: block;
         }
         .dropdown-menu.show {
             display: block;
+        }
+        .hero {
+            padding: 50px 20px;
+            background: url('images/background.jpg') no-repeat center center/cover;
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .country-images {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+        .country-images img {
+            width: 200px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.3);
+        }
+        footer {
+            background-color: #0073e6;
+            color: white;
+            padding: 15px;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Shark Tank Global - Company Tracker</h1>
+        <h1>Shark Tank Global</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="investors.html">Investors</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
         <div class="country-dropdown" onclick="toggleDropdown()">
             <img src="images/globe-icon.png" alt="Select Country">
             <ul class="dropdown-menu" id="countryMenu">
@@ -51,26 +113,20 @@
                 <li><a href="countries/australia.html">Australia</a></li>
             </ul>
         </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="investors.html">Investors</a></li>
-                <li><a href="about.html">About</a></li>
-            </ul>
-        </nav>
     </header>
     
     <section class="hero">
         <h2>Explore Shark Tank Startups from Around the World!</h2>
-        <div class="country-images">
-            <img src="images/india.jpg" alt="Shark Tank India">
-            <img src="images/us.jpg" alt="Shark Tank US">
-            <img src="images/australia.jpg" alt="Shark Tank Australia">
-        </div>
     </section>
     
+    <div class="country-images">
+        <img src="images/india.jpg" alt="Shark Tank India">
+        <img src="images/us.jpg" alt="Shark Tank US">
+        <img src="images/australia.jpg" alt="Shark Tank Australia">
+    </div>
+    
     <footer>
-        <p>&copy; 2025 Shark Tank Global | Made with ash ❤️</p>
+        <p>&copy; 2025 Shark Tank Global | Made with ❤️ ash</p>
     </footer>
 
     <script>
