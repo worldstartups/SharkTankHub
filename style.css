@@ -44,12 +44,25 @@ nav a:hover {
     border-radius: 10px;
 }
 
-/* Footer */
+/* Ensure full page height */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Pushes footer to the bottom */
+.main-content {
+    flex: 1;
+}
+
+/* Footer styling */
 footer {
-    margin-top: 20px;
-    padding: 10px;
     background-color: #0073e6;
     color: white;
-    font-style: italic; /* Adding consistency */
-    font-family: 'Georgia', serif;
+    padding: 15px;
+    text-align: center;
 }
+
