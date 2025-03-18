@@ -28,8 +28,9 @@
         .nav-buttons {
             display: flex;
             gap: 15px;
+            align-items: center;
         }
-        .nav-buttons a, .country-dropdown select {
+        .nav-buttons a {
             background: #222;
             color: white;
             text-decoration: none;
@@ -41,8 +42,21 @@
             cursor: pointer;
             transition: 0.3s ease;
         }
-        .nav-buttons a:hover, .country-dropdown select:hover {
+        .nav-buttons a:hover {
             background: #444;
+        }
+        .dropdown {
+            position: relative;
+        }
+        .dropdown select {
+            background: transparent;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            outline: none;
         }
         .hero {
             padding: 80px 20px;
@@ -101,12 +115,14 @@
             <a href="index.html">Home</a>
             <a href="about.html">About</a>
             <a href="investors.html">Investors</a>
-            <select class="country-dropdown" onchange="location = this.value;">
-                <option value="#">Select Country</option>
-                <option value="countries/india.html">India</option>
-                <option value="countries/us.html">United States</option>
-                <option value="countries/australia.html">Australia</option>
-            </select>
+            <div class="dropdown">
+                <select onchange="location = this.value;">
+                    <option value="#">Country</option>
+                    <option value="countries/india.html">India</option>
+                    <option value="countries/us.html">USA</option>
+                    <option value="countries/australia.html">Australia</option>
+                </select>
+            </div>
         </div>
     </header>
     
