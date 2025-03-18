@@ -5,21 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shark Tank Global</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .country-dropdown {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+        }
+        .country-dropdown img {
+            width: 40px;
+            height: 30px;
+            margin: 5px;
+            cursor: pointer;
+        }
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background: white;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+            list-style: none;
+            padding: 10px;
+            border-radius: 5px;
+            right: 20px;
+            top: 50px;
+        }
+        .dropdown-menu li {
+            padding: 5px 10px;
+        }
+        .dropdown-menu li a {
+            text-decoration: none;
+            color: black;
+        }
+        .dropdown-menu.show {
+            display: block;
+        }
+    </style>
 </head>
 <body>
     <header>
         <h1>Shark Tank Global - Company Tracker</h1>
+        <div class="country-dropdown" onclick="toggleDropdown()">
+            <img src="images/globe-icon.png" alt="Select Country">
+            <ul class="dropdown-menu" id="countryMenu">
+                <li><a href="countries/india.html">India</a></li>
+                <li><a href="countries/us.html">United States</a></li>
+                <li><a href="countries/australia.html">Australia</a></li>
+            </ul>
+        </div>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li class="dropdown">
-                    <a href="#">Countries ▼</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="countries/india.html">India</a></li>
-                        <li><a href="countries/us.html">United States</a></li>
-                        <li><a href="countries/australia.html">Australia</a></li>
-                    </ul>
-                </li>
                 <li><a href="investors.html">Investors</a></li>
                 <li><a href="about.html">About</a></li>
             </ul>
@@ -36,9 +70,18 @@
     </section>
     
     <footer>
-        <p>&copy; 2025 Shark Tank Hub | Made with ❤️</p>
+        <p>&copy; 2025 Shark Tank Global | Made with ❤️</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        function toggleDropdown() {
+            document.getElementById('countryMenu').classList.toggle('show');
+        }
+        window.onclick = function(event) {
+            if (!event.target.matches('.country-dropdown img')) {
+                document.getElementById('countryMenu').classList.remove('show');
+            }
+        }
+    </script>
 </body>
 </html>
