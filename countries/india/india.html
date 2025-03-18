@@ -3,149 +3,163 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shark Tank Global</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Shark Tank India</title>
+    <link rel="stylesheet" href="../../style.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
         body {
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #0d1117;
-            color: white;
-            text-align: center;
+            background: #121212;
+            color: #E0E0E0;
         }
         header {
-            background-color: #000;
-            color: white;
-            padding: 15px 50px;
-            font-size: 20px;
             display: flex;
-            justify-content: flex-end;
+            justify-content: space-between;
             align-items: center;
-            gap: 20px;
+            padding: 15px 30px;
+            background: #181818;
         }
         .nav-buttons {
             display: flex;
-            gap: 15px;
-            align-items: center;
+            gap: 20px;
         }
-        .nav-buttons a, .dropdown select {
-            background: transparent;
+        .nav-buttons a {
             color: white;
             text-decoration: none;
             font-size: 16px;
-            font-weight: 600;
-            padding: 10px;
-            border-radius: 8px;
-            border: none;
-            cursor: pointer;
-            transition: 0.3s ease;
+            padding: 8px 15px;
+            transition: 0.3s;
         }
         .nav-buttons a:hover {
-            background: #444;
+            text-decoration: underline;
         }
-        .dropdown {
-            position: relative;
-        }
-        .dropdown select {
-            border: none;
-            cursor: pointer;
-            outline: none;
-        }
-        .hero {
-            padding: 80px 20px;
-            background: url('images/sharktank-banner.jpg') no-repeat center center/cover;
-            color: white;
-            font-size: 32px;
-            font-weight: bold;
+
+        /* Season Tabs */
+        .season-tabs {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-        }
-        .hero p {
-            max-width: 600px;
-            font-size: 18px;
-        }
-        .featured-section {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            padding: 40px;
-            flex-wrap: wrap;
-        }
-        .featured-show {
-            width: 300px;
-            background: #161b22;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.2);
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-        .featured-show:hover {
-            transform: scale(1.05);
-        }
-        .featured-show img {
-            width: 100%;
-            border-radius: 10px;
-            cursor: pointer;
-        }
-        .featured-show h3 {
-            font-size: 20px;
-            margin: 10px 0;
-        }
-        footer {
-            background-color: #000;
-            color: white;
-            padding: 15px;
+            gap: 25px;
+            padding-left: 40px;
             margin-top: 20px;
+            font-size: 18px;
+            font-weight: 500;
+        }
+        .season-tab {
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .season-tab:hover, .season-tab.active {
+            text-decoration: underline;
+        }
+
+        /* Filters */
+        .filters {
+            display: flex;
+            gap: 15px;
+            padding: 20px 40px;
+        }
+        select {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background: #181818;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Company Cards */
+        .company-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+        .company-card {
+            background: rgba(255, 255, 255, 0.12);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            width: 250px;
+            text-align: center;
+        }
+
+        /* Season Content */
+        .season-content {
+            display: none;
+            padding: 20px;
+        }
+        .season-content.active {
+            display: block;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: auto;
+            background: #121212;
         }
     </style>
 </head>
 <body>
     <header>
+        <h2>Shark Tank India</h2>
         <div class="nav-buttons">
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="investors.html">Investors</a>
+            <a href="../../index.html">Home</a>
+            <a href="../../about.html">About</a>
+            <a href="../../investors.html">Investors</a>
             <div class="dropdown">
                 <select onchange="location = this.value;">
                     <option value="#">Country</option>
-                    <option value="countries/india/india.html">India</option>
-                    <option value="countries/us/us.html">USA</option>
-                    <option value="countries/australia/australia.html">Australia</option>
+                    <option value="india.html" selected>India</option>
+                    <option value="../us/us.html">USA</option>
+                    <option value="../australia/australia.html">Australia</option>
                 </select>
             </div>
         </div>
     </header>
-    
-    <section class="hero">
-        <h2>Explore Shark Tank Startups from Around the World!</h2>
-        <p>Discover groundbreaking startups, their investments, and their current status across various Shark Tank editions worldwide.</p>
-    </section>
-    
-    <div class="featured-section">
-        <div class="featured-show">
-            <img src="images/india.jpg" alt="Shark Tank India" onclick="location.href='countries/india/india.html'">
-            <h3>Shark Tank India</h3>
-            <p>Explore the most exciting startups from India.</p>
-        </div>
-        <div class="featured-show">
-            <img src="images/us.jpg" alt="Shark Tank US" onclick="location.href='countries/us/us.html'">
-            <h3>Shark Tank US</h3>
-            <p>Discover groundbreaking businesses from the USA.</p>
-        </div>
-        <div class="featured-show">
-            <img src="images/australia.jpg" alt="Shark Tank Australia" onclick="location.href='countries/australia/australia.html'">
-            <h3>Shark Tank Australia</h3>
-            <p>See the most innovative companies from Australia.</p>
-        </div>
+
+    <!-- Horizontal Season Tabs -->
+    <div class="season-tabs">
+        <span class="season-tab active" onclick="fetchSeasonData('season1.json')">Season 1</span>
+        <span class="season-tab" onclick="fetchSeasonData('season2.json')">Season 2</span>
+        <span class="season-tab" onclick="fetchSeasonData('season3.json')">Season 3</span>
+        <span class="season-tab" onclick="fetchSeasonData('season4.json')">Season 4</span>
     </div>
-    
+
+    <!-- Filters Section -->
+    <div class="filters">
+        <label>Category:</label>
+        <select id="categoryFilter">
+            <option value="All">All</option>
+        </select>
+
+        <label>Investor:</label>
+        <select id="investorFilter">
+            <option value="All">All</option>
+        </select>
+
+        <label>Valuation:</label>
+        <select id="valuationFilter">
+            <option value="All">All</option>
+            <option value="0-100">₹0 - ₹100 Cr</option>
+            <option value="100-300">₹100 - ₹300 Cr</option>
+            <option value="300-500">₹300 - ₹500 Cr</option>
+            <option value="500-1000">₹500 - ₹1000 Cr</option>
+        </select>
+    </div>
+
+    <!-- Season Content -->
+    <div id="season-container" class="company-container">
+        <p>Loading companies...</p>
+    </div>
+
     <footer>
         <p>&copy; 2025 Shark Tank Global | Made with ❤️</p>
     </footer>
+
+    <!-- Link to External JavaScript -->
+    <script src="india.js"></script>
 </body>
 </html>
