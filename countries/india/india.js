@@ -8,10 +8,11 @@ async function fetchSeasonData(seasonFile) {
         allCompanies = await response.json();
         currentSeasonFile = seasonFile;
         populateFilters();
-        displayCompanies(allCompanies);
+        applyFilters(); // Apply filters to update company count when season changes
     } catch (error) {
         console.error("Error fetching data:", error);
         document.getElementById('season-container').innerHTML = "<p>Failed to load companies.</p>";
+        document.getElementById('companyCount').textContent = "0"; // Update count on failure
     }
 }
 
@@ -54,13 +55,15 @@ function applyFilters() {
     displayCompanies(filteredCompanies);
 }
 
-// Display filtered companies
+// Display filtered companies and update count
 function displayCompanies(companies) {
     const container = document.getElementById('season-container');
+    const countDisplay = document.getElementById('companyCount'); // Get count element
     container.innerHTML = '';
 
     if (companies.length === 0) {
         container.innerHTML = "<p>No companies found.</p>";
+        countDisplay.textContent = "0"; // Update count when no companies match
         return;
     }
 
@@ -76,6 +79,9 @@ function displayCompanies(companies) {
         `;
         container.appendChild(card);
     });
+
+    // Update the count display
+    countDisplay.textContent = companies.length;
 }
 
 // Load Season 1 by default
