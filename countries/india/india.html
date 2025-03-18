@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shark Tank India</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #121212;
+            color: #E0E0E0;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background: #181818;
+        }
+        .nav-buttons {
+            display: flex;
+            gap: 20px;
+        }
+        .nav-buttons a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 8px 15px;
+            transition: 0.3s;
+        }
+        .nav-buttons a:hover {
+            text-decoration: underline;
+        }
+
+        /* Horizontally Aligned Season Tabs */
+        .season-tabs {
+            display: flex;
+            gap: 25px;
+            padding-left: 40px;
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: 500;
+        }
+        .season-tab {
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .season-tab:hover, .season-tab.active {
+            text-decoration: underline;
+        }
+
+        /* Company Cards */
+        .company-card {
+            background: rgba(255, 255, 255, 0.12);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.1);
+            margin: 15px;
+            backdrop-filter: blur(5px);
+        }
+
+        /* Season Content */
+        .season-content {
+            display: none;
+            padding: 20px;
+        }
+        .season-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h2 style="margin: 0;">Shark Tank India</h2>
+        <div class="nav-buttons">
+            <a href="../index.html">Home</a>
+            <a href="../about.html">About</a>
+            <a href="../investors.html">Investors</a>
+            <div class="dropdown">
+                <select onchange="location = this.value;">
+                    <option value="#">Country</option>
+                    <option value="india.html" selected>India</option>
+                    <option value="us.html">USA</option>
+                    <option value="australia.html">Australia</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <!-- Horizontal Season Tabs -->
+    <div class="season-tabs">
+        <span class="season-tab active" onclick="showSeason(1)">Season 1</span>
+        <span class="season-tab" onclick="showSeason(2)">Season 2</span>
+        <span class="season-tab" onclick="showSeason(3)">Season 3</span>
+        <span class="season-tab" onclick="showSeason(4)">Season 4</span>
+    </div>
+
+    <!-- Season Content -->
+    <div id="season-container">
+        <p>Loading companies...</p>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Shark Tank Global | Made with ❤️</p>
+    </footer>
+
+    <script>
+        let companyData = [];
+
+        // Function to fetch company data from JSON
+        async function fetchCompanies() {
+            try {
+                const response = await fetch('../data/companies-india.json');
+                companyData = await response.json();
+                showSeason(1); // Load Season 1 by default
+            } catch (error) {
+                console.error("Error fetching data:", error);
+                document.getElementById('season-container').innerHTML = "<p>Failed to load companies.</p>";
+            }
+        }
+
+        // Function to display companies based on selected season
+        function showSeason(season) {
+            const container = document.getElementById('season-container');
+            container.innerHTML = ''; // Clear previous content
+
+            const filteredCompanies = companyData.filter(company => company.season === season);
+
+            if (filteredCompanies.length === 0) {
+                container.innerHTML = "<p>No companies found for this season.</p>";
+                return;
+            }
+
+            filteredCompanies.forEach(company => {
+                const card = document.createElement('div');
+                card.classList.add('company-card');
+                card.innerHTML = `
+                    <h3>${company.name}</h3>
+                    <p><strong>Category:</strong> ${company.category}</p>
+                    <p><strong>Revenue:</strong> ${company.revenue}</p>
+                    <p><strong>Founder:</strong> ${company.founder}</p>
+                    <p><strong>Investment:</strong> ${company.investment}</p>
+                `;
+                container.appendChild(card);
+            });
+
+            // Update active class on tabs
+            document.querySelectorAll('.season-tab').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.season-tab')[season - 1].classList.add('active');
+        }
+
+        // Fetch companies when page loads
+        fetchCompanies();
+    </script>
+</body>
+</html>
