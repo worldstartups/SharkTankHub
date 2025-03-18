@@ -5,19 +5,21 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f8f9fa;
-    color: #333; /* Better readability */
+    color: #333;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 /* Header */
 header {
     background-color: #0073e6;
     color: white;
-    padding: 20px;
+    padding: 15px 20px;
     font-size: 24px;
-    font-style: italic; /* Italicized text */
-    font-family: 'Georgia', serif; /* More elegant font */
+    font-style: italic;
+    font-family: 'Georgia', serif;
     text-align: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
 }
 
 /* Navigation */
@@ -26,14 +28,15 @@ nav {
     padding: 10px;
     display: flex;
     justify-content: center;
-    gap: 15px;
+    flex-wrap: wrap; /* Allow items to wrap in small screens */
+    gap: 10px;
 }
 
 nav a {
     color: white;
     text-decoration: none;
     font-size: 18px;
-    padding: 8px 15px;
+    padding: 10px 15px;
     transition: all 0.3s ease-in-out;
     border-radius: 5px;
 }
@@ -53,6 +56,26 @@ nav a:hover {
     border-radius: 10px;
 }
 
+/* Company Cards */
+.company-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    padding: 20px;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+.company-card {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    width: 90%; /* Make cards flexible */
+    max-width: 350px;
+    text-align: center;
+}
+
 /* Footer */
 footer {
     margin-top: 20px;
@@ -60,18 +83,20 @@ footer {
     background-color: #0073e6;
     color: white;
     font-size: 16px;
+    width: 100%;
 }
 
-/* Responsive Design */
+/* 🛠️ Fixing Mobile View */
 @media (max-width: 768px) {
     body {
         font-size: 14px;
-        padding: 0 10px;
+        padding: 0 5px;
     }
 
     header {
         padding: 15px;
-        font-size: 22px;
+        font-size: 20px;
+        text-align: center;
     }
 
     nav {
@@ -82,13 +107,23 @@ footer {
     nav a {
         width: 100%;
         text-align: center;
-        padding: 10px;
         font-size: 16px;
     }
 
     .container {
-        width: 90%;
-        padding: 15px;
+        width: 95%;
+        padding: 10px;
+    }
+
+    .company-container {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .company-card {
+        width: 95%;
+        max-width: 320px;
     }
 
     footer {
