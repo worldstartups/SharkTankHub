@@ -17,12 +17,12 @@
             text-align: center;
         }
         .container {
-            padding: 50px;
+            padding: 20px 50px; /* Reduced padding to remove extra space */
         }
         .tabs-section {
             background: black;
-            padding: 30px 0;
-            margin-top: 20px;
+            padding: 15px 0; /* Reduced padding to make it closer */
+            margin-top: 0; /* Removed additional margin */
         }
         .tabs {
             display: flex;
@@ -31,7 +31,7 @@
         }
         .tab {
             background: rgba(255, 255, 255, 0.2);
-            padding: 12px 24px;
+            padding: 10px 20px;
             border-radius: 8px;
             cursor: pointer;
             font-weight: bold;
@@ -42,7 +42,7 @@
         }
         .season-content {
             display: none;
-            padding: 30px;
+            padding: 20px; /* Reduced padding */
         }
         .season-content.active {
             display: flex;
@@ -55,20 +55,15 @@
             border-radius: 10px;
             box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.2);
             text-align: center;
-            margin: 15px;
+            margin: 10px; /* Reduced margin */
             width: 280px;
             backdrop-filter: blur(5px);
-        }
-        .company-card img {
-            width: 100%;
-            border-radius: 8px;
-            margin-bottom: 10px;
         }
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 30px;
+            padding: 10px 30px; /* Reduced padding */
             background: rgba(0, 0, 0, 0.7);
         }
         .nav-buttons {
@@ -97,7 +92,7 @@
 </head>
 <body>
     <header>
-        <h2>Shark Tank India</h2>
+        <h2 style="margin: 0;">Shark Tank India</h2> <!-- Removed extra margin -->
         <div class="nav-buttons">
             <a href="../index.html">Home</a>
             <a href="../about.html">About</a>
@@ -114,8 +109,8 @@
     </header>
 
     <div class="container">
-        <h2 style="font-size: 36px; font-weight: bold;">Welcome to Shark Tank India</h2>
-        <p>Discover innovative startups, investments, and their growth.</p>
+        <h2 style="font-size: 28px; font-weight: bold; margin-bottom: 10px;">Welcome to Shark Tank India</h2> <!-- Reduced font size and margin -->
+        <p style="margin-bottom: 5px;">Discover innovative startups, investments, and their growth.</p> <!-- Reduced margin -->
     </div>
 
     <!-- Season Tabs Section -->
@@ -129,7 +124,6 @@
 
         <div id="season-1" class="season-content active">
             <div class="company-card">
-                <img src="../images/company-a.jpg" alt="Company A">
                 <h3>Company A</h3>
                 <p><strong>Category:</strong> Tech</p>
                 <p><strong>Revenue:</strong> $10M</p>
@@ -137,7 +131,6 @@
                 <p><strong>Investment:</strong> ₹1 Crore for 10%</p>
             </div>
             <div class="company-card">
-                <img src="../images/company-b.jpg" alt="Company B">
                 <h3>Company B</h3>
                 <p><strong>Category:</strong> Food</p>
                 <p><strong>Revenue:</strong> $5M</p>
@@ -148,7 +141,6 @@
 
         <div id="season-2" class="season-content">
             <div class="company-card">
-                <img src="../images/company-c.jpg" alt="Company C">
                 <h3>Company C</h3>
                 <p><strong>Category:</strong> Health</p>
                 <p><strong>Revenue:</strong> $8M</p>
@@ -159,7 +151,6 @@
 
         <div id="season-3" class="season-content">
             <div class="company-card">
-                <img src="../images/company-d.jpg" alt="Company D">
                 <h3>Company D</h3>
                 <p><strong>Category:</strong> Fashion</p>
                 <p><strong>Revenue:</strong> $12M</p>
@@ -170,7 +161,6 @@
 
         <div id="season-4" class="season-content">
             <div class="company-card">
-                <img src="../images/company-e.jpg" alt="Company E">
                 <h3>Company E</h3>
                 <p><strong>Category:</strong> AI</p>
                 <p><strong>Revenue:</strong> $15M</p>
