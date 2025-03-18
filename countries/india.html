@@ -12,15 +12,13 @@
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
+            background: black; /* Removed background image */
             color: white;
             text-align: center;
         }
-        .container {
-            padding: 20px 50px; /* Reduced padding to remove extra space */
-        }
         .tabs-section {
             background: black;
-            padding: 15px 0; /* Reduced padding to make it closer */
+            padding: 15px 0;
             margin-top: 0; /* Removed additional margin */
         }
         .tabs {
@@ -41,7 +39,7 @@
         }
         .season-content {
             display: none;
-            padding: 20px; /* Reduced padding */
+            padding: 20px;
         }
         .season-content.active {
             display: flex;
@@ -54,7 +52,7 @@
             border-radius: 10px;
             box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.2);
             text-align: center;
-            margin: 10px; /* Reduced margin */
+            margin: 10px;
             width: 280px;
             backdrop-filter: blur(5px);
         }
@@ -62,8 +60,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 30px; /* Reduced padding */
-            background: rgba(0, 0, 0, 0.7);
+            padding: 10px 30px;
+            background: black;
         }
         .nav-buttons {
             display: flex;
@@ -84,102 +82,8 @@
             position: absolute;
             bottom: 0;
             width: 100%;
-            background: rgba(0, 0, 0, 0.7);
+            background: black;
             padding: 10px;
         }
     </style>
-</head>
-<body>
-    <header>
-        <h2 style="margin: 0;">Shark Tank India</h2> <!-- Removed extra margin -->
-        <div class="nav-buttons">
-            <a href="../index.html">Home</a>
-            <a href="../about.html">About</a>
-            <a href="../investors.html">Investors</a>
-            <div class="dropdown">
-                <select onchange="location = this.value;">
-                    <option value="#">Country</option>
-                    <option value="india.html" selected>India</option>
-                    <option value="us.html">USA</option>
-                    <option value="australia.html">Australia</option>
-                </select>
-            </div>
-        </div>
-    </header>
-
-    <div class="container">
-        <h2 style="font-size: 28px; font-weight: bold; margin-bottom: 10px;">Welcome to Shark Tank India</h2> <!-- Reduced font size and margin -->
-        <p style="margin-bottom: 5px;">Discover innovative startups, investments, and their growth.</p> <!-- Reduced margin -->
-    </div>
-
-    <!-- Season Tabs Section -->
-    <div class="tabs-section">
-        <div class="tabs">
-            <div class="tab active" onclick="showSeason(1)">Season 1</div>
-            <div class="tab" onclick="showSeason(2)">Season 2</div>
-            <div class="tab" onclick="showSeason(3)">Season 3</div>
-            <div class="tab" onclick="showSeason(4)">Season 4</div>
-        </div>
-
-        <div id="season-1" class="season-content active">
-            <div class="company-card">
-                <h3>Company A</h3>
-                <p><strong>Category:</strong> Tech</p>
-                <p><strong>Revenue:</strong> $10M</p>
-                <p><strong>Founder:</strong> John Doe</p>
-                <p><strong>Investment:</strong> ₹1 Crore for 10%</p>
-            </div>
-            <div class="company-card">
-                <h3>Company B</h3>
-                <p><strong>Category:</strong> Food</p>
-                <p><strong>Revenue:</strong> $5M</p>
-                <p><strong>Founder:</strong> Jane Smith</p>
-                <p><strong>Investment:</strong> ₹50 Lakh for 15%</p>
-            </div>
-        </div>
-
-        <div id="season-2" class="season-content">
-            <div class="company-card">
-                <h3>Company C</h3>
-                <p><strong>Category:</strong> Health</p>
-                <p><strong>Revenue:</strong> $8M</p>
-                <p><strong>Founder:</strong> Alex Patel</p>
-                <p><strong>Investment:</strong> ₹2 Crore for 12%</p>
-            </div>
-        </div>
-
-        <div id="season-3" class="season-content">
-            <div class="company-card">
-                <h3>Company D</h3>
-                <p><strong>Category:</strong> Fashion</p>
-                <p><strong>Revenue:</strong> $12M</p>
-                <p><strong>Founder:</strong> Riya Kapoor</p>
-                <p><strong>Investment:</strong> ₹1.5 Crore for 20%</p>
-            </div>
-        </div>
-
-        <div id="season-4" class="season-content">
-            <div class="company-card">
-                <h3>Company E</h3>
-                <p><strong>Category:</strong> AI</p>
-                <p><strong>Revenue:</strong> $15M</p>
-                <p><strong>Founder:</strong> Aman Gupta</p>
-                <p><strong>Investment:</strong> ₹2.5 Crore for 8%</p>
-            </div>
-        </div>
-    </div>
-
-    <footer>
-        <p>&copy; 2025 Shark Tank Global | Made with ❤️</p>
-    </footer>
-
-    <script>
-        function showSeason(season) {
-            document.querySelectorAll('.season-content').forEach(el => el.classList.remove('active'));
-            document.querySelector('#season-' + season).classList.add('active');
-            document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
-            document.querySelectorAll('.tab')[season - 1].classList.add('active');
-        }
-    </script>
-</body>
-</html>
+</head
