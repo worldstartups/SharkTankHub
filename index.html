@@ -6,47 +6,106 @@
     <title>Shark Tank Global</title>
     <link rel="stylesheet" href="style.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
         body {
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            background: url('images/ocean-blurred.jpg') no-repeat center center/cover;
+            background-color: #0d1117;
             color: white;
+            text-align: center;
         }
         header {
+            background-color: #000;
+            color: white;
+            padding: 15px 50px;
+            font-size: 20px;
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-end;
             align-items: center;
-            padding: 15px 30px;
-            background: #181818;
+            gap: 20px;
         }
         .nav-buttons {
             display: flex;
-            gap: 20px;
+            gap: 15px;
+            align-items: center;
         }
-        .nav-buttons a {
+        .nav-buttons a, .dropdown select {
+            background: transparent;
             color: white;
             text-decoration: none;
             font-size: 16px;
-            padding: 8px 15px;
-            transition: 0.3s;
+            font-weight: 600;
+            padding: 10px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s ease;
         }
         .nav-buttons a:hover {
-            text-decoration: underline;
+            background: #444;
         }
-        /* Dropdown Fix */
+        .dropdown {
+            position: relative;
+        }
         .dropdown select {
-            background: none;
-            color: white;
             border: none;
-            font-size: 16px;
             cursor: pointer;
+            outline: none;
+        }
+        .hero {
+            padding: 80px 20px;
+            background: url('images/sharktank-banner.jpg') no-repeat center center/cover;
+            color: white;
+            font-size: 32px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .hero p {
+            max-width: 600px;
+            font-size: 18px;
+        }
+        .featured-section {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 40px;
+            flex-wrap: wrap;
+        }
+        .featured-show {
+            width: 300px;
+            background: #161b22;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.2);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .featured-show:hover {
+            transform: scale(1.05);
+        }
+        .featured-show img {
+            width: 100%;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .featured-show h3 {
+            font-size: 20px;
+            margin: 10px 0;
+        }
+        footer {
+            background-color: #000;
+            color: white;
+            padding: 15px;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
     <header>
-        <h2>Shark Tank Global</h2>
         <div class="nav-buttons">
             <a href="index.html">Home</a>
             <a href="about.html">About</a>
@@ -54,17 +113,37 @@
             <div class="dropdown">
                 <select onchange="location = this.value;">
                     <option value="#">Country</option>
-                    <option value="countries/india/india.html">India</option>
-                    <option value="countries/us/us.html">USA</option>
-                    <option value="countries/australia/australia.html">Australia</option>
+                    <option value="countries/india.html">India</option>
+                    <option value="countries/us.html">USA</option>
+                    <option value="countries/australia.html">Australia</option>
                 </select>
             </div>
         </div>
     </header>
-
-    <h2>Welcome to Shark Tank Global</h2>
-    <p>Explore different Shark Tank franchises from across the world.</p>
-
+    
+    <section class="hero">
+        <h2>Explore Shark Tank Startups from Around the World!</h2>
+        <p>Discover groundbreaking startups, their investments, and their current status across various Shark Tank editions worldwide.</p>
+    </section>
+    
+    <div class="featured-section">
+        <div class="featured-show">
+            <img src="images/india.jpg" alt="Shark Tank India" onclick="location.href='countries/india/india.html'">
+            <h3>Shark Tank India</h3>
+            <p>Explore the most exciting startups from India.</p>
+        </div>
+        <div class="featured-show">
+            <img src="images/us.jpg" alt="Shark Tank US" onclick="location.href='countries/us/us.html'">
+            <h3>Shark Tank US</h3>
+            <p>Discover groundbreaking businesses from the USA.</p>
+        </div>
+        <div class="featured-show">
+            <img src="images/australia.jpg" alt="Shark Tank Australia" onclick="location.href='countries/australia/australia.html'">
+            <h3>Shark Tank Australia</h3>
+            <p>See the most innovative companies from Australia.</p>
+        </div>
+    </div>
+    
     <footer>
         <p>&copy; 2025 Shark Tank Global | Made with ❤️</p>
     </footer>
