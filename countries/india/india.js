@@ -46,7 +46,7 @@ function applyFilters() {
     if (selectedValuation !== "All") {
         const [min, max] = selectedValuation.split('-').map(Number);
         filteredCompanies = filteredCompanies.filter(company => {
-            const valuation = parseInt(company.valuation.replace('₹', '').replace(' Cr', ''));
+            const valuation = parseInt(company.valuation.replace(/[₹, Cr]/g, ""));
             return valuation >= min && valuation <= max;
         });
     }
@@ -68,7 +68,7 @@ function displayCompanies(companies) {
         const card = document.createElement('div');
         card.classList.add('company-card');
         card.innerHTML = `
-            <h3>${company.name}</h3>
+            <h3>${company.companyname}</h3>
             <p><strong>Category:</strong> ${company.category}</p>
             <p><strong>Valuation:</strong> ${company.valuation}</p>
             <p><strong>Investor:</strong> ${company.investor}</p>
