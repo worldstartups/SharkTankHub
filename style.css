@@ -1,9 +1,11 @@
+/* General Styles */
 body {
     font-family: Arial, sans-serif;
     text-align: center;
     margin: 0;
     padding: 0;
     background-color: #f8f9fa;
+    color: #333; /* Better readability */
 }
 
 /* Header */
@@ -12,25 +14,32 @@ header {
     color: white;
     padding: 20px;
     font-size: 24px;
-    font-style: italic; /* Added italic font */
-    font-family: 'Georgia', serif; /* A more elegant font */
+    font-style: italic; /* Italicized text */
+    font-family: 'Georgia', serif; /* More elegant font */
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* Navigation */
 nav {
     background: #005bb5;
     padding: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
 }
 
 nav a {
     color: white;
     text-decoration: none;
-    margin: 10px;
     font-size: 18px;
-    transition: color 0.3s ease-in-out;
+    padding: 8px 15px;
+    transition: all 0.3s ease-in-out;
+    border-radius: 5px;
 }
 
 nav a:hover {
+    background: #004a8f;
     color: #f8f9fa;
 }
 
@@ -40,9 +49,50 @@ nav a:hover {
     margin: 30px auto;
     padding: 20px;
     background: white;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
 }
 
+/* Footer */
+footer {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #0073e6;
+    color: white;
+    font-size: 16px;
+}
 
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+        padding: 0 10px;
+    }
 
+    header {
+        padding: 15px;
+        font-size: 22px;
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav a {
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    .container {
+        width: 90%;
+        padding: 15px;
+    }
+
+    footer {
+        padding: 10px;
+        font-size: 14px;
+    }
+}
