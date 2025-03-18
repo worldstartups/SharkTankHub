@@ -35,7 +35,7 @@
             text-decoration: underline;
         }
 
-        /* Season Tabs */
+        /* Season Tabs (Left Aligned & Horizontal) */
         .season-tabs {
             display: flex;
             gap: 25px;
@@ -52,29 +52,27 @@
             text-decoration: underline;
         }
 
-        /* Company Cards */
-        .company-card {
-            background: rgba(255, 255, 255, 0.12);
+        /* Cards Container (HORIZONTAL STACK) */
+        #season-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
             padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.1);
-            margin: 15px;
-            backdrop-filter: blur(5px);
+            justify-content: flex-start; /* Align to left */
         }
 
-        /* Season Content */
-        .season-content {
-            display: none;
-            padding: 20px;
-        }
-        .season-content.active {
-            display: block;
+        .company-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.2);
+            text-align: center;
+            width: 250px; /* Set fixed width */
         }
     </style>
 </head>
 <body>
     <header>
-        <h2>Shark Tank India</h2>
         <div class="nav-buttons">
             <a href="../../index.html">Home</a>
             <a href="../../about.html">About</a>
@@ -83,24 +81,27 @@
                 <select onchange="location = this.value;">
                     <option value="#">Country</option>
                     <option value="india.html" selected>India</option>
-                    <option value="../us/us.html">USA</option>
-                    <option value="../australia/australia.html">Australia</option>
+                    <option value="us.html">USA</option>
+                    <option value="australia.html">Australia</option>
                 </select>
             </div>
         </div>
     </header>
 
-    <!-- Horizontal Season Tabs -->
-    <div class="season-tabs">
-        <span class="season-tab active" onclick="fetchSeasonData('season1.json')">Season 1</span>
-        <span class="season-tab" onclick="fetchSeasonData('season2.json')">Season 2</span>
-        <span class="season-tab" onclick="fetchSeasonData('season3.json')">Season 3</span>
-        <span class="season-tab" onclick="fetchSeasonData('season4.json')">Season 4</span>
-    </div>
+    <div class="container">
+        <h2>Shark Tank India</h2>
+        <p>Discover startups, investments, and their growth across different seasons.</p>
+        
+        <!-- Horizontal Season Tabs -->
+        <div class="season-tabs">
+            <div class="season-tab active" onclick="fetchSeasonData(1)">Season 1</div>
+            <div class="season-tab" onclick="fetchSeasonData(2)">Season 2</div>
+            <div class="season-tab" onclick="fetchSeasonData(3)">Season 3</div>
+            <div class="season-tab" onclick="fetchSeasonData(4)">Season 4</div>
+        </div>
 
-    <!-- Season Content -->
-    <div id="season-container">
-        <p>Loading companies...</p>
+        <!-- Cards will be displayed here -->
+        <div id="season-container"></div>
     </div>
 
     <footer>
@@ -108,42 +109,30 @@
     </footer>
 
     <script>
-        async function fetchSeasonData(seasonFile) {
+        async function fetchSeasonData(season) {
             try {
-                const response = await fetch(seasonFile);
-                const companyData = await response.json();
-                displayCompanies(companyData);
+                const response = await fetch(`season${season}.json`);
+                const companies = await response.json();
+
+                document.getElementById("season-container").innerHTML = companies.map(company => `
+                    <div class="company-card">
+                        <h3>${company.name}</h3>
+                        <p>Category: ${company.category}</p>
+                        <p>Revenue: ${company.revenue}</p>
+                    </div>
+                `).join('');
+
+                document.querySelectorAll('.season-tab').forEach(tab => tab.classList.remove('active'));
+                document.querySelectorAll('.season-tab')[season - 1].classList.add('active');
+
             } catch (error) {
                 console.error("Error fetching data:", error);
-                document.getElementById('season-container').innerHTML = "<p>Failed to load companies.</p>";
             }
-        }
-
-        function displayCompanies(companies) {
-            const container = document.getElementById('season-container');
-            container.innerHTML = '';
-
-            if (companies.length === 0) {
-                container.innerHTML = "<p>No companies found for this season.</p>";
-                return;
-            }
-
-            companies.forEach(company => {
-                const card = document.createElement('div');
-                card.classList.add('company-card');
-                card.innerHTML = `
-                    <h3>${company.name}</h3>
-                    <p><strong>Category:</strong> ${company.category}</p>
-                    <p><strong>Revenue:</strong> ${company.revenue}</p>
-                    <p><strong>Founder:</strong> ${company.founder}</p>
-                    <p><strong>Investment:</strong> ${company.investment}</p>
-                `;
-                container.appendChild(card);
-            });
         }
 
         // Load Season 1 by default
-        fetchSeasonData('season1.json');
+        fetchSeasonData(1);
     </script>
+
 </body>
 </html>
