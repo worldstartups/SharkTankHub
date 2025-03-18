@@ -3,22 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shark Tank India Hub</title>
+    <title>Shark Tank Global</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
 </head>
 <body>
-    <header>Shark Tank India Tracker</header>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="companies.html">Companies</a>
-        <a href="investors.html">Investors</a>
-        <a href="about.html">About</a>
-    </nav>
-    <div class="container">
-        <h2>Welcome to the Shark Tank India Tracker</h2>
-        <p>Explore all the companies, their products, investments, and current status.</p>
-    </div>
-    <footer>&copy; 2025 Shark Tank India Hub | Made with ❤️</footer>
+    <header>
+        <h1>Shark Tank Global - Company Tracker</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="#">Countries ▼</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="countries/india.html">India</a></li>
+                        <li><a href="countries/us.html">United States</a></li>
+                        <li><a href="countries/australia.html">Australia</a></li>
+                    </ul>
+                </li>
+                <li><a href="investors.html">Investors</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section class="hero">
+        <h2>Explore Shark Tank Startups from Around the World!</h2>
+        <div class="country-images">
+            <img src="images/india.jpg" alt="Shark Tank India">
+            <img src="images/us.jpg" alt="Shark Tank US">
+            <img src="images/australia.jpg" alt="Shark Tank Australia">
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 Shark Tank Hub | Made with ❤️</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
