@@ -1,133 +1,64 @@
-/* General Styles */
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-    background-color: #f8f9fa;
-    color: #333;
-    overflow-x: hidden; /* Prevent horizontal scrolling */
+/* Prevent horizontal scrolling */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
-/* Header */
-header {
-    background-color: #0073e6;
-    color: white;
-    padding: 15px 20px;
-    font-size: 24px;
-    font-style: italic;
-    font-family: 'Georgia', serif;
-    text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 100%;
-}
-
-/* Navigation */
-nav {
-    background: #005bb5;
-    padding: 10px;
+/* Fix Filters Section */
+.filters {
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap; /* Allow items to wrap in small screens */
+    flex-wrap: wrap;
     gap: 10px;
+    justify-content: center; /* Center align filters */
+    align-items: center;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
 }
 
-nav a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-    padding: 10px 15px;
-    transition: all 0.3s ease-in-out;
-    border-radius: 5px;
+/* Ensure Filters Don't Overflow */
+.filters select {
+    max-width: 100%; 
+    width: auto; 
+    min-width: 120px; /* Prevent tiny dropdowns */
 }
 
-nav a:hover {
-    background: #004a8f;
-    color: #f8f9fa;
+/* Ensure Filters Stay Within Screen */
+@media (max-width: 768px) {
+    .filters {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    select {
+        width: 100%; /* Make dropdowns full width */
+    }
 }
 
-/* Content Container */
-.container {
-    max-width: 800px;
-    margin: 30px auto;
-    padding: 20px;
-    background: white;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
+/* Fix Company Count Display */
+#companyCount {
+    display: inline-block;
+    font-weight: bold;
+    font-size: 16px;
+    margin-left: 5px;
 }
 
-/* Company Cards */
+/* Fix Company Cards Overflow */
 .company-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 15px;
-    padding: 20px;
-    overflow-x: hidden; /* Prevent horizontal scroll */
+    gap: 10px;
+    padding: 10px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
+/* Fix Cards on Mobile */
 .company-card {
-    background: rgba(255, 255, 255, 0.9);
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    width: 90%; /* Make cards flexible */
+    width: 90%;
     max-width: 350px;
     text-align: center;
-}
-
-/* Footer */
-footer {
-    margin-top: 20px;
-    padding: 15px;
-    background-color: #0073e6;
-    color: white;
-    font-size: 16px;
-    width: 100%;
-}
-
-/* 🛠️ Fixing Mobile View */
-@media (max-width: 768px) {
-    body {
-        font-size: 14px;
-        padding: 0 5px;
-    }
-
-    header {
-        padding: 15px;
-        font-size: 20px;
-        text-align: center;
-    }
-
-    nav {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    nav a {
-        width: 100%;
-        text-align: center;
-        font-size: 16px;
-    }
-
-    .container {
-        width: 95%;
-        padding: 10px;
-    }
-
-    .company-container {
-        flex-direction: column;
-        align-items: center;
-        padding: 10px;
-    }
-
-    .company-card {
-        width: 95%;
-        max-width: 320px;
-    }
-
-    footer {
-        padding: 10px;
-        font-size: 14px;
-    }
 }
