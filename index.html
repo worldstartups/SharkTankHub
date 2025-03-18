@@ -25,31 +25,24 @@
             align-items: center;
             gap: 20px;
         }
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
+        .nav-buttons {
             display: flex;
-            gap: 20px;
+            gap: 15px;
         }
-        nav ul li {
-            display: inline;
-        }
-        nav ul li a {
+        .nav-buttons a, .country-dropdown select {
+            background: #222;
             color: white;
             text-decoration: none;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 600;
-            padding: 10px;
-            background: none;
-        }
-        .country-dropdown select {
-            background-color: #000;
-            color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
             border: none;
-            font-size: 18px;
-            font-weight: 600;
-            padding: 5px;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+        .nav-buttons a:hover, .country-dropdown select:hover {
+            background: #444;
         }
         .hero {
             padding: 80px 20px;
@@ -104,15 +97,11 @@
 </head>
 <body>
     <header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="investors.html">Investors</a></li>
-            </ul>
-        </nav>
-        <div class="country-dropdown">
-            <select onchange="location = this.value;">
+        <div class="nav-buttons">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="investors.html">Investors</a>
+            <select class="country-dropdown" onchange="location = this.value;">
                 <option value="#">Select Country</option>
                 <option value="countries/india.html">India</option>
                 <option value="countries/us.html">United States</option>
