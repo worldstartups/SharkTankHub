@@ -16,9 +16,9 @@
     border-radius: 12px;
 }
 
-/* Header Styling (With Glow Effect) */
+/* Table Header Styling - Green Gradient */
 .company-table thead th {
-    background: linear-gradient(135deg, #ff9800, #ff5722);
+    background: linear-gradient(135deg, #00c853, #008f39); /* Green Gradient */
     color: white;
     font-size: 16px;
     font-weight: bold;
@@ -26,17 +26,18 @@
     text-align: left;
     text-transform: uppercase;
     letter-spacing: 1px;
-    border-radius: 15px;
+    border-radius: 12px;
     position: relative;
     transition: all 0.3s ease-in-out;
-    box-shadow: 0px 4px 10px rgba(255, 152, 0, 0.5);
+    box-shadow: 0px 4px 10px rgba(0, 200, 83, 0.5); /* Green Glow */
 }
 
-/* Header Glow on Hover */
+/* Header Hover Effect - Brighter Green */
 .company-table thead th:hover {
     transform: scale(1.05);
-    box-shadow: 0px 6px 16px rgba(255, 152, 0, 0.8);
+    box-shadow: 0px 6px 16px rgba(0, 200, 83, 0.8); /* Intense Green Glow */
 }
+
 
 /* Row Styling */
 .company-table tbody tr {
