@@ -11,7 +11,7 @@ async function fetchSeasonData(seasonFile) {
         applyFilters(); // Ensures all companies are shown initially
     } catch (error) {
         console.error("Error fetching data:", error);
-        document.getElementById('startupTableBody').innerHTML = "<tr><td colspan='6'>Failed to load companies.</td></tr>";
+        document.getElementById('season-container').innerHTML = "<p>Failed to load companies.</p>";
         document.getElementById('companyCount').textContent = "0"; // Set count to 0 on failure
     }
 }
@@ -54,31 +54,52 @@ function applyFilters() {
 
     displayCompanies(filteredCompanies);
 }
-
-// Display filtered companies in table format and update count
+// Display filtered companies and update count
 function displayCompanies(companies) {
-    const tableBody = document.getElementById('startupTableBody');
+    const container = document.getElementById('season-container');
     const countDisplay = document.getElementById('companyCount'); // Get count element
-    tableBody.innerHTML = '';
+    container.innerHTML = '';
 
     if (companies.length === 0) {
-        tableBody.innerHTML = "<tr><td colspan='6'>No companies found.</td></tr>";
+        container.innerHTML = "<p>No companies found.</p>";
         countDisplay.textContent = "0"; // Update count when no companies match
         return;
     }
 
+    // Create table
+    let table = document.createElement("table");
+    table.style.width = "100%";
+    table.style.borderCollapse = "collapse";
+
+    // Table headers
+    let thead = document.createElement("thead");
+    thead.innerHTML = `
+        <tr style="background: #222; color: white;">
+            <th style="padding: 10px; border: 1px solid white;">Company Name</th>
+            <th style="padding: 10px; border: 1px solid white;">Category</th>
+            <th style="padding: 10px; border: 1px solid white;">Valuation</th>
+            <th style="padding: 10px; border: 1px solid white;">Investor</th>
+            <th style="padding: 10px; border: 1px solid white;">CEO</th>
+        </tr>
+    `;
+    table.appendChild(thead);
+
+    // Table body
+    let tbody = document.createElement("tbody");
     companies.forEach(company => {
-        const row = document.createElement('tr');
+        let row = document.createElement("tr");
         row.innerHTML = `
-            <td>${company.companyname}</td>
-            <td>${company.category}</td>
-            <td>${company.subcategory}</td>
-            <td>${company.investor}</td>
-            <td>₹${company.valuation} Cr</td>
-            <td><a href="${company.website}" target="_blank">Visit</a></td>
+            <td style="padding: 10px; border: 1px solid white;">${company.companyname}</td>
+            <td style="padding: 10px; border: 1px solid white;">${company.category}</td>
+            <td style="padding: 10px; border: 1px solid white;">${company.valuation}</td>
+            <td style="padding: 10px; border: 1px solid white;">${company.investor}</td>
+            <td style="padding: 10px; border: 1px solid white;">${company.ceo}</td>
         `;
-        tableBody.appendChild(row);
+        tbody.appendChild(row);
     });
+
+    table.appendChild(tbody);
+    container.appendChild(table);
 
     // Update the count display
     countDisplay.textContent = companies.length;
