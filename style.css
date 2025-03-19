@@ -44,58 +44,96 @@ nav a:hover {
     border-radius: 10px;
 }
 
-/* General Table Styling */
+/* Table Container with Glass Effect */
+.table-container {
+    width: 100%;
+    padding: 20px;
+    overflow-x: auto;
+    backdrop-filter: blur(10px);
+}
+
+/* Advanced Glassmorphic Table */
 .company-table {
     width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    font-family: 'Inter', sans-serif;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+}
+
+/* Header with Neon Glow */
+.company-table thead th {
+    background: linear-gradient(135deg, #111, #222);
+    color: #fff;
     font-size: 16px;
-    border-radius: 12px;
-    overflow: hidden; /* Ensures rounded corners */
-}
-
-/* Stylish Glassmorphic Table Header */
-.company-table th {
-    background: rgba(255, 255, 255, 0.1); /* Light transparent white */
-    backdrop-filter: blur(10px); /* Glassmorphism Effect */
-    color: #ffffff;
-    font-weight: 700;
-    padding: 16px;
-    text-align: left;
-    font-size: 17px;
-    letter-spacing: 0.5px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-/* Table Body Styling */
-.company-table td {
+    font-weight: bold;
     padding: 14px;
     text-align: left;
-    color: #e0e0e0;
+    border-radius: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-/* Alternate Row Shading */
-.company-table tr:nth-child(even) {
+/* Row Styling with Neumorphism */
+.company-table tbody tr {
     background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 8px rgba(0, 255, 255, 0.1);
+    transition: all 0.3s ease-in-out;
 }
 
-.company-table tr:nth-child(odd) {
-    background: rgba(255, 255, 255, 0.03);
+/* Alternate Row Color */
+.company-table tbody tr:nth-child(even) {
+    background: rgba(255, 255, 255, 0.12);
 }
 
-/* Prevent text cutoff on hover */
-.company-table {
-    border-collapse: separate;
-    border-spacing: 0 4px; /* Adds space between rows */
+/* Hover Animation */
+.company-table tbody tr:hover {
+    background: rgba(0, 255, 255, 0.2);
+    transform: scale(1.02);
+    box-shadow: 0px 6px 16px rgba(0, 255, 255, 0.3);
 }
 
-/* Hover Effect - Prevent Clipping */
-.company-table tr:hover {
-    background: rgba(255, 255, 255, 0.15);
-    transform: scale(1.01);
-    box-shadow: 0px 4px 12px rgba(255, 255, 255, 0.08);
-    transition: all 0.3s ease;
-    position: relative;
-    z-index: 10; /* Ensures row appears on top */
+/* Rounded Data Cells */
+.company-table tbody td {
+    padding: 14px;
+    font-size: 14px;
+    color: #ddd;
+}
+
+/* Button-Style Data Cells */
+.company-table tbody td span {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-weight: 500;
+    text-align: center;
+    transition: 0.3s ease-in-out;
+}
+
+/* Different Colors for Categories */
+.company-table tbody td.category span {
+    background: rgba(255, 165, 0, 0.3);
+    color: #ffa500;
+}
+
+.company-table tbody td.valuation span {
+    background: rgba(0, 255, 127, 0.3);
+    color: #00ff7f;
+}
+
+.company-table tbody td.investor span {
+    background: rgba(255, 0, 127, 0.3);
+    color: #ff007f;
+}
+
+.company-table tbody td.ceo span {
+    background: rgba(173, 216, 230, 0.3);
+    color: #add8e6;
+}
+
+/* Hover Glow Effect on Cells */
+.company-table tbody td span:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
