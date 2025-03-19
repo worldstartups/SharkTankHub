@@ -16,7 +16,7 @@ header {
     font-weight: bold;
 }
 
-/* Filter Section */
+/* Filters */
 .filter-container {
     display: flex;
     justify-content: center;
@@ -38,16 +38,30 @@ select {
     color: #333;
 }
 
-/* Table Container */
+/* Table Styling */
 .table-container {
     width: 100%;
     overflow-x: auto;
     padding: 10px;
 }
 
-iframe {
-    max-width: 100%;
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #ddd;
+}
+
+th {
+    background: #0073e6;
+    color: white;
 }
 
 /* Mobile View */
