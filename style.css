@@ -3,8 +3,8 @@ body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
-    background: #121212;
-    color: #E0E0E0;
+    background: #ffffff; /* Changed to White */
+    color: #333; /* Adjusted text color for contrast */
 }
 
 /* Header */
@@ -13,8 +13,9 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 15px 30px;
-    background: #181818;
+    background: #f0f0f0; /* Light Grey for Header */
 }
+
 
 /* Navigation Buttons */
 .nav-buttons {
