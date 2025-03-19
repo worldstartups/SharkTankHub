@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shark Tank India</title>
     <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
     <style>
         body {
             font-family: 'Poppins', sans-serif;
@@ -35,28 +36,12 @@
             text-decoration: underline;
         }
 
-        /* Season Tabs */
-        .season-tabs {
-            display: flex;
-            gap: 25px;
-            padding-left: 40px;
-            margin-top: 20px;
-            font-size: 18px;
-            font-weight: 500;
-        }
-        .season-tab {
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .season-tab:hover, .season-tab.active {
-            text-decoration: underline;
-        }
-
         /* Filters */
         .filters {
             display: flex;
             gap: 15px;
             padding: 20px 40px;
+            flex-wrap: wrap;
         }
         select {
             padding: 8px;
@@ -67,31 +52,29 @@
             cursor: pointer;
         }
 
-        /* Company Cards */
-        .company-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            padding: 20px;
-        }
-        .company-card {
-            background: rgba(255, 255, 255, 0.12);
-            padding: 20px;
-            border-radius: 12px;
+        /* Table Design */
+        table {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background: #181818;
+            color: #E0E0E0;
             box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(5px);
-            width: 250px;
+        }
+        th, td {
+            padding: 12px;
             text-align: center;
+            border-bottom: 1px solid #333;
         }
-
-        /* Season Content */
-        .season-content {
-            display: none;
-            padding: 20px;
+        th {
+            background: #0073e6;
+            color: white;
         }
-        .season-content.active {
-            display: block;
+        tr:nth-child(even) {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        tr:hover {
+            background: rgba(255, 255, 255, 0.2);
         }
 
         footer {
@@ -120,14 +103,6 @@
         </div>
     </header>
 
-    <!-- Horizontal Season Tabs -->
-    <div class="season-tabs">
-        <span class="season-tab active" onclick="fetchSeasonData('season1.json')">Season 1</span>
-        <span class="season-tab" onclick="fetchSeasonData('season2.json')">Season 2</span>
-        <span class="season-tab" onclick="fetchSeasonData('season3.json')">Season 3</span>
-        <span class="season-tab" onclick="fetchSeasonData('season4.json')">Season 4</span>
-    </div>
-
     <!-- Filters Section -->
     <div class="filters">
         <label>Category:</label>
@@ -148,21 +123,36 @@
             <option value="300-500">₹300 - ₹500 Cr</option>
             <option value="500-1000">₹500 - ₹1000 Cr</option>
         </select>
-          <!-- Company Count Display -->
-    <label><strong>Count:</strong></label>
-    <span id="companyCount" style="font-weight: bold;">0</span>
+
+        <!-- Company Count Display -->
+        <label><strong>Count:</strong></label>
+        <span id="companyCount" style="font-weight: bold;">0</span>
     </div>
 
-    <!-- Season Content -->
-    <div id="season-container" class="company-container">
-        <p>Loading companies...</p>
-    </div>
+    <!-- Data Table -->
+    <table id="startupTable">
+        <thead>
+            <tr>
+                <th>Company</th>
+                <th>Category</th>
+                <th>Subcategory</th>
+                <th>Investor</th>
+                <th>Valuation</th>
+                <th>Website</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Data will be populated dynamically -->
+        </tbody>
+    </table>
 
     <footer>
-        <p>&copy; 2025 Shark Tank Global | Made in India❤️</p>
+        <p>&copy; 2025 Shark Tank Global | Made in India ❤️</p>
     </footer>
 
-    <!-- Link to External JavaScript -->
+    <!-- JavaScript Dependencies -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="india.js"></script>
 </body>
 </html>
