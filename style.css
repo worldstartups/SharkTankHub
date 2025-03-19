@@ -1,4 +1,63 @@
-/* Table Container */
+/* Global Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #121212;
+    color: #E0E0E0;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background: #181818;
+}
+
+/* Navigation Buttons */
+.nav-buttons {
+    display: flex;
+    gap: 20px;
+}
+.nav-buttons a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 8px 15px;
+    transition: 0.3s;
+}
+.nav-buttons a:hover {
+    text-decoration: underline;
+}
+
+/* --- SEASON TABS --- */
+.season-tabs {
+    display: flex;
+    gap: 25px;
+    padding-left: 40px;
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.season-tab {
+    cursor: pointer;
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #FF9800, #FF6D00); /* Orange Gradient */
+    color: white;
+    border-radius: 25px;
+    transition: 0.3s ease-in-out;
+    box-shadow: 0px 4px 10px rgba(255, 152, 0, 0.5); /* Orange Glow */
+}
+
+.season-tab:hover, .season-tab.active {
+    transform: scale(1.1);
+    box-shadow: 0px 6px 16px rgba(255, 152, 0, 0.8);
+}
+
+/* --- TABLE STYLES --- */
 .table-container {
     width: 100%;
     padding: 20px;
@@ -16,7 +75,7 @@
     border-radius: 12px;
 }
 
-/* Table Header Styling - Green Gradient */
+/* TABLE HEADER - GREEN GLOW */
 .company-table thead th {
     background: linear-gradient(135deg, #00c853, #008f39); /* Green Gradient */
     color: white;
@@ -32,14 +91,13 @@
     box-shadow: 0px 4px 10px rgba(0, 200, 83, 0.5); /* Green Glow */
 }
 
-/* Header Hover Effect - Brighter Green */
+/* Table Header Hover Effect */
 .company-table thead th:hover {
     transform: scale(1.05);
-    box-shadow: 0px 6px 16px rgba(0, 200, 83, 0.8); /* Intense Green Glow */
+    box-shadow: 0px 6px 16px rgba(0, 255, 100, 0.9); /* Brighter Green Glow */
 }
 
-
-/* Row Styling */
+/* ROW STYLING */
 .company-table tbody tr {
     background: rgba(255, 255, 255, 0.08);
     box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
@@ -51,21 +109,21 @@
     background: rgba(255, 255, 255, 0.12);
 }
 
-/* Hover Effect */
+/* ROW HOVER EFFECT - ORANGE GLOW */
 .company-table tbody tr:hover {
     background: rgba(255, 152, 0, 0.2);
     transform: scale(1.02);
     box-shadow: 0px 6px 16px rgba(255, 152, 0, 0.3);
 }
 
-/* Rounded Data Cells */
+/* ROUNDED DATA CELLS */
 .company-table tbody td {
     padding: 14px;
     font-size: 14px;
     color: #ddd;
 }
 
-/* Button-Style Data Cells */
+/* BUTTON-STYLE DATA CELLS */
 .company-table tbody td span {
     display: inline-block;
     padding: 8px 16px;
@@ -76,8 +134,16 @@
     background: rgba(255, 255, 255, 0.2);
 }
 
-/* Hover Glow Effect on Cells */
+/* HOVER EFFECT ON CELLS */
 .company-table tbody td span:hover {
     transform: scale(1.05);
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: auto;
+    background: #121212;
 }
