@@ -54,56 +54,48 @@ function applyFilters() {
 
     displayCompanies(filteredCompanies);
 }
-// Display filtered companies and update count
 function displayCompanies(companies) {
     const container = document.getElementById('season-container');
-    const countDisplay = document.getElementById('companyCount'); // Get count element
+    const countDisplay = document.getElementById('companyCount'); 
     container.innerHTML = '';
 
     if (companies.length === 0) {
         container.innerHTML = "<p>No companies found.</p>";
-        countDisplay.textContent = "0"; // Update count when no companies match
+        countDisplay.textContent = "0"; 
         return;
     }
 
-    // Create table
-    let table = document.createElement("table");
-    table.style.width = "100%";
-    table.style.borderCollapse = "collapse";
-
-    // Table headers
-    let thead = document.createElement("thead");
-    thead.innerHTML = `
-        <tr style="background: #222; color: white;">
-            <th style="padding: 10px; border: 1px solid white;">Company Name</th>
-            <th style="padding: 10px; border: 1px solid white;">Category</th>
-            <th style="padding: 10px; border: 1px solid white;">Valuation</th>
-            <th style="padding: 10px; border: 1px solid white;">Investor</th>
-            <th style="padding: 10px; border: 1px solid white;">CEO</th>
-        </tr>
+    let tableHTML = `
+        <table class="company-table">
+            <thead>
+                <tr>
+                    <th>Company Name</th>
+                    <th>Category</th>
+                    <th>Valuation</th>
+                    <th>Investor</th>
+                    <th>CEO</th>
+                </tr>
+            </thead>
+            <tbody>
     `;
-    table.appendChild(thead);
 
-    // Table body
-    let tbody = document.createElement("tbody");
     companies.forEach(company => {
-        let row = document.createElement("tr");
-        row.innerHTML = `
-            <td style="padding: 10px; border: 1px solid white;">${company.companyname}</td>
-            <td style="padding: 10px; border: 1px solid white;">${company.category}</td>
-            <td style="padding: 10px; border: 1px solid white;">${company.valuation}</td>
-            <td style="padding: 10px; border: 1px solid white;">${company.investor}</td>
-            <td style="padding: 10px; border: 1px solid white;">${company.ceo}</td>
+        tableHTML += `
+            <tr>
+                <td>${company.companyname}</td>
+                <td>${company.category}</td>
+                <td>${company.valuation}</td>
+                <td>${company.investor}</td>
+                <td>${company.ceo}</td>
+            </tr>
         `;
-        tbody.appendChild(row);
     });
 
-    table.appendChild(tbody);
-    container.appendChild(table);
-
-    // Update the count display
+    tableHTML += `</tbody></table>`;
+    container.innerHTML = tableHTML;
     countDisplay.textContent = companies.length;
 }
+
 
 // Load Season 1 by default
 document.addEventListener("DOMContentLoaded", function () {
