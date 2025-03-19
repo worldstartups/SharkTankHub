@@ -1,9 +1,11 @@
+/* General Styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
     text-align: center;
     margin: 0;
     padding: 0;
     background-color: #f8f9fa;
+    color: black;
 }
 
 /* Header */
@@ -12,8 +14,8 @@ header {
     color: white;
     padding: 20px;
     font-size: 24px;
-    font-style: italic; /* Added italic font */
-    font-family: 'Georgia', serif; /* A more elegant font */
+    font-style: italic;
+    font-family: 'Georgia', serif;
 }
 
 /* Navigation */
@@ -36,7 +38,7 @@ nav a:hover {
 
 /* Content Container */
 .container {
-    max-width: 800px;
+    max-width: 900px;
     margin: 30px auto;
     padding: 20px;
     background: white;
@@ -44,7 +46,106 @@ nav a:hover {
     border-radius: 10px;
 }
 
+/* Season Tabs */
+.season-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: 500;
+}
 
+.season-tab {
+    cursor: pointer;
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
 
+.season-tab:hover,
+.season-tab.active {
+    background: #0073e6;
+    color: white;
+}
 
+/* Filters Section */
+.filters {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    padding: 20px;
+    background: white; /* Changed to white */
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
 
+.filters label {
+    color: black; /* Changed label text color to black */
+    font-weight: bold;
+}
+
+select {
+    padding: 8px;
+    border: 2px solid #007bff;
+    border-radius: 8px;
+    background: white; /* Set select dropdown background to white */
+    color: black; /* Changed select text color to black */
+    cursor: pointer;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Table Header with Blue Gradient */
+th {
+    background: linear-gradient(to right, #0044cc, #007bff); /* Blue gradient */
+    color: white;
+    padding: 12px;
+    font-size: 16px;
+    text-align: left;
+}
+
+/* Table Rows */
+td {
+    padding: 10px;
+    font-size: 14px;
+    border-bottom: 1px solid #ddd;
+    color: black; /* Changed table row text to black */
+}
+
+/* Company Cards */
+.company-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.company-card {
+    background: rgba(255, 255, 255, 0.12);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    width: 250px;
+    text-align: center;
+    color: black;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: auto;
+    background: #121212;
+    color: white;
+}
