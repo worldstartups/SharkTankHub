@@ -44,4 +44,35 @@ nav a:hover {
     border-radius: 10px;
 }
 
+/* Enhanced Table Styling */
+.company-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-family: 'Inter', sans-serif; /* Popular modern font */
+    font-size: 16px;
+}
+
+.company-table th {
+    background: #181818;
+    color: #ffffff;
+    font-weight: 600;
+    padding: 12px 8px;
+    text-align: left; /* Left-aligned header */
+}
+
+.company-table td {
+    padding: 10px 8px;
+    text-align: left; /* Left-align all values */
+}
+
+.company-table tr:nth-child(even) {
+    background: rgba(255, 255, 255, 0.08); /* Subtle alternate row color */
+}
+
+.company-table tr:nth-child(odd) {
+    background: rgba(255, 255, 255, 0.03); /* Lighter background for contrast */
+}
+
+
 
