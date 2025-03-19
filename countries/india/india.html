@@ -3,24 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shark Tank India</title>
+    <title>Shark Tank India - Startups</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h2>Shark Tank India - Companies</h2>
+        <h1>Shark Tank India - Startups</h1>
     </header>
 
-    <!-- Embed Datawrapper Table -->
+    <!-- Filter Section -->
+    <div class="filter-container">
+        <label for="categoryFilter">Category:</label>
+        <select id="categoryFilter">
+            <option value="All">All</option>
+        </select>
+
+        <label for="investorFilter">Investor:</label>
+        <select id="investorFilter">
+            <option value="All">All</option>
+        </select>
+
+        <label for="subcategoryFilter">Subcategory:</label>
+        <select id="subcategoryFilter">
+            <option value="All">All</option>
+        </select>
+    </div>
+
+    <!-- Embedded Datawrapper Table -->
     <div class="table-container">
         <iframe 
-            title="Shark Tank India Season 1 Companies" 
-            aria-label="Table" 
-            id="datawrapper-chart-Snw41" 
-            src="https://datawrapper.dwcdn.net/Snw41/1/" 
-            scrolling="no" 
-            frameborder="0" 
-            style="border: none; width: 100%; height: 2600px;" 
+            title="Shark Tank India Startups"
+            aria-label="Table"
+            id="datawrapper-chart"
+            src="https://datawrapper.dwcdn.net/Snw41/1/"
+            scrolling="no"
+            frameborder="0"
+            style="border: none; width: 100%; height: 2600px;"
             data-external="1">
         </iframe>
     </div>
@@ -28,4 +46,3 @@
     <script src="india.js"></script>
 </body>
 </html>
-
