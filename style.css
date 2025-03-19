@@ -1,120 +1,47 @@
-/* ---- 🌟 GENERAL STYLES ---- */
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: Arial, sans-serif;
+    text-align: center;
     margin: 0;
     padding: 0;
-    background: linear-gradient(135deg, #0033cc, #0056b3); /* Blue Gradient */
-    color: #333;
+    background-color: #f8f9fa;
 }
 
-/* ---- 🔵 HEADER ---- */
+/* Header */
 header {
-    background: transparent;
+    background-color: #0073e6;
     color: white;
-    text-align: center;
-    padding: 30px;
+    padding: 20px;
     font-size: 24px;
-    font-weight: bold;
+    font-style: italic; /* Added italic font */
+    font-family: 'Georgia', serif; /* A more elegant font */
 }
 
-/* ---- 1️⃣ SEASON TABS (MODERN STYLE) ---- */
-.season-tabs {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    padding-top: 20px;
-    position: relative;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+/* Navigation */
+nav {
+    background: #005bb5;
+    padding: 10px;
 }
 
-.season-tab {
-    padding: 12px 20px;
-    border-radius: 30px 30px 0 0;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 500;
+nav a {
     color: white;
-    background: transparent;
-    transition: 0.3s ease-in-out;
-    border: none;
-    position: relative;
+    text-decoration: none;
+    margin: 10px;
+    font-size: 18px;
+    transition: color 0.3s ease-in-out;
 }
 
-/* Active Tab Style */
-.season-tab.active {
-    background: white;
-    color: #0056b3;
-    font-weight: bold;
-    box-shadow: 0px -4px 10px rgba(255, 255, 255, 0.3);
-    padding-bottom: 15px;
+nav a:hover {
+    color: #f8f9fa;
 }
 
-/* Bottom Line Animation */
-.season-tabs::after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    background: white;
-    bottom: 0;
-}
-
-/* ---- 2️⃣ TABLE CONTAINER ---- */
-.table-container {
-    width: 90%;
+/* Content Container */
+.container {
+    max-width: 800px;
     margin: 30px auto;
+    padding: 20px;
     background: white;
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
 }
 
-/* ---- TABLE ---- */
-.company-table {
-    width: 100%;
-    border-collapse: collapse;
-}
 
-/* Table Header */
-.company-table thead th {
-    background: #f0f5ff;
-    color: #0056b3;
-    padding: 14px;
-    font-size: 14px;
-    font-weight: bold;
-    text-align: left;
-    text-transform: uppercase;
-}
-
-/* ---- 3️⃣ TABLE ROWS (BLOCK DESIGN) ---- */
-.company-table tbody tr {
-    background: #f8f9fa; /* Light Grey Block */
-    transition: all 0.3s ease-in-out;
-}
-
-/* Alternate Row Color */
-.company-table tbody tr:nth-child(even) {
-    background: #e9ecef;
-}
-
-/* Row Hover Effect */
-.company-table tbody tr:hover {
-    background: #d6e4ff;
-    transform: scale(1.02);
-    box-shadow: 0px 6px 16px rgba(0, 123, 255, 0.3);
-}
-
-/* Table Cells */
-.company-table tbody td {
-    padding: 14px;
-    font-size: 14px;
-    color: #333;
-}
-
-/* ---- FOOTER ---- */
-footer {
-    text-align: center;
-    padding: 20px;
-    color: white;
-    font-size: 14px;
-}
