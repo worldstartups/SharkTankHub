@@ -1,48 +1,3 @@
-/* Import Google Font */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
-
-body {
-    font-family: 'Inter', sans-serif;
-    background: #121212;
-    color: #E0E0E0;
-    margin: 0;
-    padding: 0;
-}
-
-/* Season Tabs Container */
-.season-tabs {
-    display: flex;
-    gap: 15px;
-    padding: 20px 40px;
-    justify-content: center;
-}
-
-/* Individual Season Tabs */
-.season-tab {
-    padding: 10px 20px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    border-radius: 25px;
-    transition: 0.3s ease-in-out;
-    background: rgba(255, 255, 255, 0.1);
-    color: #fff;
-    text-align: center;
-}
-
-/* Active Season Tab */
-.season-tab.active {
-    background: linear-gradient(135deg, #ff9800, #ff5722);
-    box-shadow: 0 4px 10px rgba(255, 152, 0, 0.4);
-    transform: scale(1.1);
-}
-
-/* Hover Effect */
-.season-tab:hover {
-    background: rgba(255, 152, 0, 0.3);
-    transform: scale(1.05);
-}
-
 /* Table Container */
 .table-container {
     width: 100%;
@@ -58,20 +13,29 @@ body {
     border-spacing: 0 10px;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
-    border-radius: 10px;
+    border-radius: 12px;
 }
 
-/* Header Styling */
+/* Header Styling (With Glow Effect) */
 .company-table thead th {
-    background: linear-gradient(135deg, #1e1e1e, #2c2c2c);
-    color: #fff;
+    background: linear-gradient(135deg, #ff9800, #ff5722);
+    color: white;
     font-size: 16px;
     font-weight: bold;
     padding: 14px;
     text-align: left;
-    border-radius: 10px;
     text-transform: uppercase;
     letter-spacing: 1px;
+    border-radius: 15px;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 4px 10px rgba(255, 152, 0, 0.5);
+}
+
+/* Header Glow on Hover */
+.company-table thead th:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 6px 16px rgba(255, 152, 0, 0.8);
 }
 
 /* Row Styling */
@@ -109,27 +73,6 @@ body {
     text-align: center;
     transition: 0.3s ease-in-out;
     background: rgba(255, 255, 255, 0.2);
-}
-
-/* Different Colors for Categories */
-.company-table tbody td.category span {
-    background: rgba(255, 165, 0, 0.3);
-    color: #ffa500;
-}
-
-.company-table tbody td.valuation span {
-    background: rgba(0, 255, 127, 0.3);
-    color: #00ff7f;
-}
-
-.company-table tbody td.investor span {
-    background: rgba(255, 0, 127, 0.3);
-    color: #ff007f;
-}
-
-.company-table tbody td.ceo span {
-    background: rgba(173, 216, 230, 0.3);
-    color: #add8e6;
 }
 
 /* Hover Glow Effect on Cells */
