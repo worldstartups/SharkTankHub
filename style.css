@@ -32,7 +32,7 @@ header {
     text-decoration: underline;
 }
 
-/* --- SEASON TABS --- */
+/* --- SEASON TABS - ORANGE GLOW --- */
 .season-tabs {
     display: flex;
     gap: 25px;
@@ -75,7 +75,7 @@ header {
     border-radius: 12px;
 }
 
-/* TABLE HEADER - GREEN GLOW */
+/* --- TABLE HEADER - GREEN GLOW --- */
 .company-table thead th {
     background: linear-gradient(135deg, #00c853, #008f39); /* Green Gradient */
     color: white;
