@@ -111,4 +111,5 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById('categoryFilter').addEventListener("change", applyFilters);
     document.getElementById('investorFilter').addEventListener("change", applyFilters);
     document.getElementById('valuationFilter').addEventListener("change", applyFilters);
+    
 });
