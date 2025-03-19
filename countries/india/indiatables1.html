@@ -1,0 +1,78 @@
+<body>
+    <div class="filters">
+        <label>Category:</label>
+        <select id="categoryFilter">
+            <option value="">All</option>
+            <option value="Tech">Tech</option>
+            <option value="Health">Health</option>
+            <option value="Finance">Finance</option>
+        </select>
+
+        <label>Investor:</label>
+        <select id="investorFilter">
+            <option value="">All</option>
+            <option value="Aman Gupta">Aman Gupta</option>
+            <option value="Namita Thapar">Namita Thapar</option>
+        </select>
+    </div>
+
+    <table id="startupTable" class="display">
+        <thead>
+            <tr>
+                <th>Company</th>
+                <th>Category</th>
+                <th>Subcategory</th>
+                <th>Investor</th>
+                <th>Valuation</th>
+                <th>Website</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Company A</td>
+                <td>Tech</td>
+                <td>EdTech</td>
+                <td>Aman Gupta</td>
+                <td>₹100 Cr</td>
+                <td><a href="#">Visit</a></td>
+            </tr>
+            <tr>
+                <td>Company B</td>
+                <td>Health</td>
+                <td>Skin/Hair Care</td>
+                <td>Namita Thapar</td>
+                <td>₹250 Cr</td>
+                <td><a href="#">Visit</a></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        $(document).ready(function() {
+            let table = $('#startupTable').DataTable();
+
+            $('#categoryFilter, #investorFilter').on('change', function() {
+                let category = $('#categoryFilter').val().toLowerCase();
+                let investor = $('#investorFilter').val().toLowerCase();
+
+                table.rows().every(function() {
+                    let data = this.data();
+                    let showRow = true;
+
+                    if (category && !data[1].toLowerCase().includes(category)) {
+                        showRow = false;
+                    }
+                    if (investor && !data[3].toLowerCase().includes(investor)) {
+                        showRow = false;
+                    }
+
+                    if (showRow) {
+                        this.node().style.display = '';
+                    } else {
+                        this.node().style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
