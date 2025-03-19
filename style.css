@@ -44,5 +44,18 @@ nav a:hover {
     border-radius: 10px;
 }
 
+.table-container {
+    width: 100%;
+    overflow-x: auto; /* Prevents horizontal scrolling */
+    text-align: center;
+    padding: 10px;
+}
+
+iframe {
+    max-width: 100%;
+    height: 2600px; /* Adjust as needed */
+    border: none;
+}
+
 
 
