@@ -4,165 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shark Tank India</title>
-    <link rel="stylesheet" href="../../style.css">
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: #121212;
-            color: #E0E0E0;
-        }
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 30px;
-            background: #181818;
-        }
-        .nav-buttons {
-            display: flex;
-            gap: 20px;
-        }
-        .nav-buttons a {
-            color: white;
-            text-decoration: none;
-            font-size: 16px;
-            padding: 8px 15px;
-            transition: 0.3s;
-        }
-        .nav-buttons a:hover {
-            text-decoration: underline;
-        }
-
-        /* Season Tabs */
-        .season-tabs {
-            display: flex;
-            gap: 25px;
-            padding-left: 40px;
-            margin-top: 20px;
-            font-size: 18px;
-            font-weight: 500;
-        }
-        .season-tab {
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .season-tab:hover, .season-tab.active {
-            text-decoration: underline;
-        }
-
-        /* Filters */
-        .filters {
-            display: flex;
-            gap: 15px;
-            padding: 20px 40px;
-        }
-        select {
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background: #181818;
-            color: white;
-            cursor: pointer;
-        }
-
-        /* Company Cards */
-        .company-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            padding: 20px;
-        }
-        .company-card {
-            background: rgba(255, 255, 255, 0.12);
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(5px);
-            width: 250px;
-            text-align: center;
-        }
-
-        /* Season Content */
-        .season-content {
-            display: none;
-            padding: 20px;
-        }
-        .season-content.active {
-            display: block;
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            margin-top: auto;
-            background: #121212;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h2>Shark Tank India</h2>
-        <div class="nav-buttons">
-            <a href="../../index.html">Home</a>
-            <a href="../../about.html">About</a>
-            <a href="../../investors.html">Investors</a>
-            <div class="dropdown">
-                <select onchange="location = this.value;">
-                    <option value="#">Country</option>
-                    <option value="india.html" selected>India</option>
-                    <option value="../us/us.html">USA</option>
-                    <option value="../australia/australia.html">Australia</option>
-                </select>
-            </div>
-        </div>
+        <h2>Shark Tank India - Companies</h2>
     </header>
 
-    <!-- Horizontal Season Tabs -->
-    <div class="season-tabs">
-        <span class="season-tab active" onclick="fetchSeasonData('season1.json')">Season 1</span>
-        <span class="season-tab" onclick="fetchSeasonData('season2.json')">Season 2</span>
-        <span class="season-tab" onclick="fetchSeasonData('season3.json')">Season 3</span>
-        <span class="season-tab" onclick="fetchSeasonData('season4.json')">Season 4</span>
+    <!-- Embed Datawrapper Table -->
+    <div class="table-container">
+        <iframe 
+            title="Shark Tank India Season 1 Companies" 
+            aria-label="Table" 
+            id="datawrapper-chart-Snw41" 
+            src="https://datawrapper.dwcdn.net/Snw41/1/" 
+            scrolling="no" 
+            frameborder="0" 
+            style="border: none; width: 100%; height: 2600px;" 
+            data-external="1">
+        </iframe>
     </div>
 
-    <!-- Filters Section -->
-    <div class="filters">
-        <label>Category:</label>
-        <select id="categoryFilter">
-            <option value="All">All</option>
-        </select>
-
-        <label>Investor:</label>
-        <select id="investorFilter">
-            <option value="All">All</option>
-        </select>
-
-        <label>Valuation:</label>
-        <select id="valuationFilter">
-            <option value="All">All</option>
-            <option value="0-100">₹0 - ₹100 Cr</option>
-            <option value="100-300">₹100 - ₹300 Cr</option>
-            <option value="300-500">₹300 - ₹500 Cr</option>
-            <option value="500-1000">₹500 - ₹1000 Cr</option>
-        </select>
-          <!-- Company Count Display -->
-    <label><strong>Count:</strong></label>
-    <span id="companyCount" style="font-weight: bold;">0</span>
-    </div>
-
-    <!-- Season Content -->
-    <div id="season-container" class="company-container">
-        <p>Loading companies...</p>
-    </div>
-
-    <footer>
-        <p>&copy; 2025 Shark Tank Global | Made in India❤️</p>
-    </footer>
-
-    <!-- Link to External JavaScript -->
     <script src="india.js"></script>
 </body>
 </html>
