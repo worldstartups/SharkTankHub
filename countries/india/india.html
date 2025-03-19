@@ -36,6 +36,23 @@
             text-decoration: underline;
         }
 
+        /* Season Tabs */
+        .season-tabs {
+            display: flex;
+            gap: 25px;
+            padding-left: 40px;
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: 500;
+        }
+        .season-tab {
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .season-tab:hover, .season-tab.active {
+            text-decoration: underline;
+        }
+
         /* Filters */
         .filters {
             display: flex;
@@ -102,6 +119,14 @@
             </div>
         </div>
     </header>
+
+    <!-- Horizontal Season Tabs -->
+    <div class="season-tabs">
+        <span class="season-tab active" onclick="fetchSeasonData('season1.json')">Season 1</span>
+        <span class="season-tab" onclick="fetchSeasonData('season2.json')">Season 2</span>
+        <span class="season-tab" onclick="fetchSeasonData('season3.json')">Season 3</span>
+        <span class="season-tab" onclick="fetchSeasonData('season4.json')">Season 4</span>
+    </div>
 
     <!-- Filters Section -->
     <div class="filters">
