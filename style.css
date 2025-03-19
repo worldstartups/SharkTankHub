@@ -1,29 +1,26 @@
-/* Global Styles */
+/* ----- Global Reset ----- */
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
-    background: #ffffff; /* Changed to White */
-    color: #333; /* Adjusted text color for contrast */
+    background: #ffffff; /* White Background */
+    color: #333;
 }
 
-/* Header */
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+/* ----- Header and Footer ----- */
+header, footer {
+    background: #f0f0f0;
     padding: 15px 30px;
-    background: #f0f0f0; /* Light Grey for Header */
+    text-align: center;
 }
 
-
-/* Navigation Buttons */
+/* ----- NAVIGATION ----- */
 .nav-buttons {
     display: flex;
     gap: 20px;
 }
 .nav-buttons a {
-    color: white;
+    color: #333;
     text-decoration: none;
     font-size: 16px;
     padding: 8px 15px;
@@ -33,52 +30,67 @@ header {
     text-decoration: underline;
 }
 
-/* --- SEASON TABS - ORANGE GLOW --- */
+/* ----- 1️⃣ SEASON TABS (Rounded) ----- */
 .season-tabs {
     display: flex;
-    gap: 25px;
-    padding-left: 40px;
+    justify-content: center;
+    gap: 10px;
     margin-top: 20px;
-    font-size: 18px;
-    font-weight: 500;
 }
-
 .season-tab {
-    cursor: pointer;
     padding: 12px 20px;
-    background: linear-gradient(135deg, #FF9800, #FF6D00); /* Orange Gradient */
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
     color: white;
-    border-radius: 25px;
+    background: linear-gradient(135deg, #007bff, #0056b3); /* Blue Gradient */
     transition: 0.3s ease-in-out;
-    box-shadow: 0px 4px 10px rgba(255, 152, 0, 0.5); /* Orange Glow */
+    box-shadow: 0px 4px 8px rgba(0, 123, 255, 0.4);
 }
-
 .season-tab:hover, .season-tab.active {
+    background: linear-gradient(135deg, #0056b3, #0041a3);
     transform: scale(1.1);
-    box-shadow: 0px 6px 16px rgba(255, 152, 0, 0.8);
+    box-shadow: 0px 6px 16px rgba(0, 123, 255, 0.6);
 }
 
-/* --- TABLE STYLES --- */
+/* ----- 2️⃣ FILTERS (White Background & Black Text) ----- */
+.filters {
+    display: flex;
+    gap: 15px;
+    padding: 20px;
+    justify-content: center;
+}
+select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #ffffff; /* White Background */
+    color: #000; /* Black Text */
+    cursor: pointer;
+}
+
+/* ----- 3️⃣ TABLE DESIGN ----- */
 .table-container {
     width: 100%;
     padding: 20px;
     overflow-x: auto;
-    backdrop-filter: blur(10px);
 }
 
 /* Glassmorphic Table */
 .company-table {
-    width: 100%;
+    width: 90%;
     border-collapse: separate;
     border-spacing: 0 10px;
+    margin: auto;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     border-radius: 12px;
 }
 
-/* --- TABLE HEADER - GREEN GLOW --- */
+/* --- TABLE HEADER - BLUE GLOW --- */
 .company-table thead th {
-    background: linear-gradient(135deg, #00c853, #008f39); /* Green Gradient */
+    background: linear-gradient(135deg, #007bff, #0056b3);
     color: white;
     font-size: 16px;
     font-weight: bold;
@@ -89,42 +101,42 @@ header {
     border-radius: 12px;
     position: relative;
     transition: all 0.3s ease-in-out;
-    box-shadow: 0px 4px 10px rgba(0, 200, 83, 0.5); /* Green Glow */
+    box-shadow: 0px 4px 10px rgba(0, 123, 255, 0.5);
 }
 
 /* Table Header Hover Effect */
 .company-table thead th:hover {
     transform: scale(1.05);
-    box-shadow: 0px 6px 16px rgba(0, 255, 100, 0.9); /* Brighter Green Glow */
+    box-shadow: 0px 6px 16px rgba(0, 123, 255, 0.8);
 }
 
-/* ROW STYLING */
+/* --- 4️⃣ TABLE ROWS WITH BLOCK COLOR --- */
 .company-table tbody tr {
-    background: rgba(255, 255, 255, 0.08);
-    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+    background: #f8f9fa; /* Light Grey Block Color */
     transition: all 0.3s ease-in-out;
+    border-radius: 8px;
 }
 
 /* Alternate Row Color */
 .company-table tbody tr:nth-child(even) {
-    background: rgba(255, 255, 255, 0.12);
+    background: #e9ecef;
 }
 
-/* ROW HOVER EFFECT - ORANGE GLOW */
+/* Row Hover Effect */
 .company-table tbody tr:hover {
-    background: rgba(255, 152, 0, 0.2);
+    background: #d6e4ff;
     transform: scale(1.02);
-    box-shadow: 0px 6px 16px rgba(255, 152, 0, 0.3);
+    box-shadow: 0px 6px 16px rgba(0, 123, 255, 0.3);
 }
 
-/* ROUNDED DATA CELLS */
+/* Table Data Cells */
 .company-table tbody td {
     padding: 14px;
     font-size: 14px;
-    color: #ddd;
+    color: #333;
 }
 
-/* BUTTON-STYLE DATA CELLS */
+/* Table Cells with Block Look */
 .company-table tbody td span {
     display: inline-block;
     padding: 8px 16px;
@@ -132,19 +144,17 @@ header {
     font-weight: 500;
     text-align: center;
     transition: 0.3s ease-in-out;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(0, 123, 255, 0.1);
 }
 
-/* HOVER EFFECT ON CELLS */
+/* Hover Glow Effect on Cells */
 .company-table tbody td span:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
 }
 
-/* FOOTER */
+/* ----- FOOTER ----- */
 footer {
     text-align: center;
     padding: 20px;
-    margin-top: auto;
-    background: #121212;
 }
