@@ -49,30 +49,34 @@ nav a:hover {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
-    font-family: 'Inter', sans-serif; /* Popular modern font */
+    font-family: 'Inter', sans-serif; /* Modern popular font */
     font-size: 16px;
 }
 
+/* Stylish Table Header */
 .company-table th {
-    background: #181818;
+    background: linear-gradient(to right, #222, #333); /* Subtle gradient */
     color: #ffffff;
-    font-weight: 600;
-    padding: 12px 8px;
-    text-align: left; /* Left-aligned header */
+    font-weight: 700;
+    padding: 14px 10px;
+    text-align: left; /* Left-align header */
+    font-size: 17px; /* Slightly larger font */
+    letter-spacing: 0.5px;
 }
 
+/* Normal Table Cells */
 .company-table td {
-    padding: 10px 8px;
-    text-align: left; /* Left-align all values */
+    padding: 12px 10px;
+    text-align: left;
 }
 
+/* Alternate Row Coloring */
 .company-table tr:nth-child(even) {
-    background: rgba(255, 255, 255, 0.08); /* Subtle alternate row color */
+    background: rgba(255, 255, 255, 0.08);
 }
 
 .company-table tr:nth-child(odd) {
-    background: rgba(255, 255, 255, 0.03); /* Lighter background for contrast */
+    background: rgba(255, 255, 255, 0.03);
 }
-
 
 
