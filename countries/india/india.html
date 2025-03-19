@@ -4,50 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shark Tank India - Startups</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f4f9;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 90%;
+            margin: auto;
+            padding-top: 20px;
+        }
+        iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+            overflow: hidden;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Shark Tank India - Startups</h1>
-    </header>
+    <h1>Shark Tank India - Season 1 Startups</h1>
 
-    <!-- Filters -->
-    <div class="filter-container">
-        <label for="categoryFilter">Category:</label>
-        <select id="categoryFilter">
-            <option value="All">All</option>
-        </select>
-
-        <label for="investorFilter">Investor:</label>
-        <select id="investorFilter">
-            <option value="All">All</option>
-        </select>
-
-        <label for="subcategoryFilter">Subcategory:</label>
-        <select id="subcategoryFilter">
-            <option value="All">All</option>
-        </select>
+    <div class="container">
+        <!-- Embedding the table from table.html -->
+        <iframe src="indiatables1.html"></iframe>
     </div>
-
-    <!-- Table -->
-    <div class="table-container">
-        <table id="startupTable">
-            <thead>
-                <tr>
-                    <th>Company</th>
-                    <th>Category</th>
-                    <th>Subcategory</th>
-                    <th>Investor</th>
-                    <th>Valuation</th>
-                    <th>Website</th>
-                </tr>
-            </thead>
-            <tbody id="tableBody">
-                <!-- Data will be inserted here -->
-            </tbody>
-        </table>
-    </div>
-
-    <script src="india.js"></script>
 </body>
 </html>
