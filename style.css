@@ -1,86 +1,139 @@
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
 body {
-    font-family: Arial, sans-serif;
-    text-align: center;
+    font-family: 'Inter', sans-serif;
+    background: #121212;
+    color: #E0E0E0;
     margin: 0;
     padding: 0;
-    background-color: #f8f9fa;
 }
 
-/* Header */
-header {
-    background-color: #0073e6;
-    color: white;
-    padding: 20px;
-    font-size: 24px;
-    font-style: italic; /* Added italic font */
-    font-family: 'Georgia', serif; /* A more elegant font */
+/* Season Tabs Container */
+.season-tabs {
+    display: flex;
+    gap: 15px;
+    padding: 20px 40px;
+    justify-content: center;
 }
 
-/* Navigation */
-nav {
-    background: #005bb5;
-    padding: 10px;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-    margin: 10px;
-    font-size: 18px;
-    transition: color 0.3s ease-in-out;
-}
-
-nav a:hover {
-    color: #f8f9fa;
-}
-
-/* Content Container */
-.container {
-    max-width: 800px;
-    margin: 30px auto;
-    padding: 20px;
-    background: white;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-}
-/* Table Container */
-.company-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-family: 'Inter', sans-serif; /* Clean & popular font */
-    color: #e0e0e0; /* Light text for dark mode */
-}
-
-/* Table Header */
-.company-table th {
-    background: rgba(255, 255, 255, 0.1);
-    text-align: left;
-    padding: 12px 16px;
+/* Individual Season Tabs */
+.season-tab {
+    padding: 10px 20px;
+    font-size: 16px;
     font-weight: 600;
-    font-size: 15px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    cursor: pointer;
+    border-radius: 25px;
+    transition: 0.3s ease-in-out;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    text-align: center;
 }
 
-/* Table Rows */
-.company-table td {
-    padding: 12px 16px;
-    text-align: left;
-    font-size: 14px;
-    font-weight: 400;
-}
-
-/* Alternate Row Color */
-.company-table tr:nth-child(even) {
-    background: rgba(255, 255, 255, 0.05);
+/* Active Season Tab */
+.season-tab.active {
+    background: linear-gradient(135deg, #ff9800, #ff5722);
+    box-shadow: 0 4px 10px rgba(255, 152, 0, 0.4);
+    transform: scale(1.1);
 }
 
 /* Hover Effect */
-.company-table tr:hover {
-    background: rgba(255, 255, 255, 0.15);
-    transform: scale(1.01);
-    box-shadow: 0px 4px 12px rgba(255, 255, 255, 0.08);
-    transition: all 0.3s ease;
+.season-tab:hover {
+    background: rgba(255, 152, 0, 0.3);
+    transform: scale(1.05);
 }
 
+/* Table Container */
+.table-container {
+    width: 100%;
+    padding: 20px;
+    overflow-x: auto;
+    backdrop-filter: blur(10px);
+}
 
+/* Glassmorphic Table */
+.company-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+}
+
+/* Header Styling */
+.company-table thead th {
+    background: linear-gradient(135deg, #1e1e1e, #2c2c2c);
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 14px;
+    text-align: left;
+    border-radius: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Row Styling */
+.company-table tbody tr {
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Alternate Row Color */
+.company-table tbody tr:nth-child(even) {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+/* Hover Effect */
+.company-table tbody tr:hover {
+    background: rgba(255, 152, 0, 0.2);
+    transform: scale(1.02);
+    box-shadow: 0px 6px 16px rgba(255, 152, 0, 0.3);
+}
+
+/* Rounded Data Cells */
+.company-table tbody td {
+    padding: 14px;
+    font-size: 14px;
+    color: #ddd;
+}
+
+/* Button-Style Data Cells */
+.company-table tbody td span {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-weight: 500;
+    text-align: center;
+    transition: 0.3s ease-in-out;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Different Colors for Categories */
+.company-table tbody td.category span {
+    background: rgba(255, 165, 0, 0.3);
+    color: #ffa500;
+}
+
+.company-table tbody td.valuation span {
+    background: rgba(0, 255, 127, 0.3);
+    color: #00ff7f;
+}
+
+.company-table tbody td.investor span {
+    background: rgba(255, 0, 127, 0.3);
+    color: #ff007f;
+}
+
+.company-table tbody td.ceo span {
+    background: rgba(173, 216, 230, 0.3);
+    color: #add8e6;
+}
+
+/* Hover Glow Effect on Cells */
+.company-table tbody td span:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
