@@ -44,33 +44,38 @@ nav a:hover {
     border-radius: 10px;
 }
 
-/* Enhanced Table Styling */
+/* General Table Styling */
 .company-table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
-    font-family: 'Inter', sans-serif; /* Modern popular font */
+    font-family: 'Inter', sans-serif;
     font-size: 16px;
+    border-radius: 12px;
+    overflow: hidden; /* Ensures rounded corners */
 }
 
-/* Stylish Table Header */
+/* Stylish Glassmorphic Table Header */
 .company-table th {
-    background: linear-gradient(to right, #222, #333); /* Subtle gradient */
+    background: rgba(255, 255, 255, 0.1); /* Light transparent white */
+    backdrop-filter: blur(10px); /* Glassmorphism Effect */
     color: #ffffff;
     font-weight: 700;
-    padding: 14px 10px;
-    text-align: left; /* Left-align header */
-    font-size: 17px; /* Slightly larger font */
-    letter-spacing: 0.5px;
-}
-
-/* Normal Table Cells */
-.company-table td {
-    padding: 12px 10px;
+    padding: 16px;
     text-align: left;
+    font-size: 17px;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* Alternate Row Coloring */
+/* Table Body Styling */
+.company-table td {
+    padding: 14px;
+    text-align: left;
+    color: #e0e0e0;
+}
+
+/* Alternate Row Shading */
 .company-table tr:nth-child(even) {
     background: rgba(255, 255, 255, 0.08);
 }
@@ -79,4 +84,8 @@ nav a:hover {
     background: rgba(255, 255, 255, 0.03);
 }
 
-
+/* Hover Effect */
+.company-table tr:hover {
+    background: rgba(255, 255, 255, 0.12);
+    transition: 0.3s ease-in-out;
+}
